@@ -6,6 +6,7 @@
 
         <classes>
             <class name="TatvaCare.LoginTest"/>
+            <class name="TatvaCare.HomeTest"/>
 
         </classes>
     </test> <!-- Test -->

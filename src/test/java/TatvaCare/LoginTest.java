@@ -11,9 +11,13 @@ import io.qameta.allure.Story;
 import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.testng.Assert;
 import org.testng.Reporter;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pageobjects.TatvaCare.LoginPO;
 import utilities.Constants;
+
+import java.util.List;
 
 public class LoginTest extends BaseTest {
 
@@ -26,7 +30,6 @@ public class LoginTest extends BaseTest {
         Login loginData = new LoginData().getLoginData();
         Reporter.log("Step 1: Navigate to URl");
         selenium.navigateToPage(Constants.URL);
-
         Reporter.log("Step 2: Enter mobileNumber, password and click on the login button");
         // new LoginFunction(driver, selenium).loginIntoApplicationByUser(Constants.MobileNumber, Constants.Password);
         new LoginFunction(driver, selenium).loginIntoApplicationByUser(loginData.getMobileNumber(), loginData.getPassword());
@@ -78,17 +81,6 @@ public class LoginTest extends BaseTest {
 //
 //        Assert.assertEquals(loginPO.ValidationMessageForRequiredFieldMissing(),"A required field is missing. Please fill out all required fields and try again.");
 //}
-    @Test(priority = 0, description = "Login and click on HomeTab")
-    public void LoginAndClickOnHomeTab()throws InterruptedException{
-        Login loginData = new LoginData().getLoginData();
-        LoginPO loginPO = new LoginPO(driver);
-        selenium.navigateToPage(Constants.URL);
-        new LoginFunction(driver, selenium).loginIntoApplicationByUser(loginData.getMobileNumber(), loginData.getPassword());
-        Reporter.log("Step 1: Login and Click On HomeTab");
-        new LoginFunction(driver,selenium).navigateOnHomeTab();
-        Assert.assertTrue();
-
-    }
 
 
 }

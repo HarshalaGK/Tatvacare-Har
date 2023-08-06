@@ -1,6 +1,7 @@
 package dataobjects;
 
 public class Login {
+
  private String mobileNumber;
  private String password;
 
