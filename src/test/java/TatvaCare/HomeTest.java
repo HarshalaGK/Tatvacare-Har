@@ -4,13 +4,10 @@ import base.BaseTest;
 import datafactory.LoginData;
 import dataobjects.Login;
 import functions.LoginFunction;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
 import pageobjects.TatvaCare.HomePO;
-import pageobjects.TatvaCare.LoginPO;
 import utilities.Constants;
 
 import java.util.List;
@@ -33,19 +30,22 @@ public class HomeTest extends BaseTest{
         Reporter.log("Step 1: Click On HomeTab");
         new LoginFunction(driver,selenium).navigateOnHomeTab();
 
-        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='card custom-card ng-star-inserted']"));
+        List<String> subtabList = homePO.getDashboardTabNameList();
+        Reporter.log("Step 2: Dashboard Tab List:"+subtabList);
+        Assert.assertTrue(subtabList.contains("Events"));
+        Assert.assertTrue(subtabList.contains("My List"));
+        Assert.assertTrue(subtabList.contains("Survey"));
 
-        // Get the number of elements found
-        int numElements = elements.size();
-        Assert.assertEquals(numElements,7);
+        Reporter.log("Step 3: Validate user navigate on calender tab after clicking on calender view all button");
+        String calenderHeader = homePO.navigateOnCalenderThroughDashBoard();
+        Assert.assertEquals(calenderHeader,"Calendar");
 
-//        List<String> subtabList = homePO.getDashboardTabList();
-//        Reporter.log("Step 2: Dashboard Tab List:"+subtabList);
-//        Assert.assertTrue(subtabList.contains(""));
-//        Assert.assertTrue(subtabList.contains(""));
-//        Assert.assertTrue(subtabList.contains(""));
+        Reporter.log("Step 4: validate user navigate on event tab");
+        String eventsPageTitle= homePO.navigateOnEventPage();
+        Assert.assertEquals(eventsPageTitle,"Events");
 
+        String myListPageTitle= homePO.navigateOnMyListPage();
+        Assert.assertEquals(myListPageTitle,"My List");
     }
-
 
 }

@@ -25,6 +25,29 @@ public class HomePO extends BasePO {
     @FindBy(xpath ="//div[@class='card custom-card ng-star-inserted']")
     private WebElement nunOfTab;
 
+    @FindBy(xpath = "//a[@href='#/events']")
+    private WebElement eventViewAllButton;
+
+    @FindBy(xpath = "//span[text()='Events']")
+    private WebElement eventPageTitle;
+
+    @FindBy(xpath = "//a[@class='text-decoration-none header-back-link ng-star-inserted']")
+    private WebElement backButtonOfEventPage;
+
+    @FindBy(xpath = "//div[@class='col-auto ng-star-inserted']/a")
+    private WebElement myListViewAllButton;
+
+    @FindBy(xpath = "//div[@class='appointment-header']/div/div[2]/a")
+    private WebElement calenderViewAllButton;
+
+    @FindBy(xpath = "//span[@class='ml-2 mr-4 heading']")
+    private WebElement calenderTitle;
+
+    @FindBy(xpath = "//img[@alt='Back']")
+    private WebElement myListBackButton;
+
+    @FindBy(xpath = "//span[text()='My List']")
+    private WebElement myListPageTitleText;
 
       public void loginAndClickOnHomeTab() throws InterruptedException {
           selenium.hardWait(3);
@@ -35,24 +58,39 @@ public class HomePO extends BasePO {
           selenium.hardWait(10);
 
       }
-        //  elements = driver.find_elements_by_xpath('your_xpath_here')
-//     int num_elements = len(nunOfTab);
-//
-//          print("Number of elements found:", num_elements)
-//          List<WebElement> elements = driver.findElements(By.xpath("//div[@class='card custom-card ng-star-inserted']"));
-//
-//          // Get the number of elements found
-//          int numElements = elements.size();
+    public void numberOFSubTab() {
+        List<WebElement> elements = driver.findElements(By.xpath("//div[@class='card custom-card ng-star-inserted']"));
+        // Get the number of elements found
+        int numOfSubTab = elements.size();
+        Assert.assertEquals(numOfSubTab, 7);
+    }
 
-          // Print the number of elements
-       //   System.out.println("Number of elements found: " + numElements);
+    public List<String> getDashboardTabNameList() {
+        List<WebElement>subTabList = driver.findElements(By.xpath("//div[@class='card custom-card ng-star-inserted']"));
+        return subTabList.stream().map(x -> x.getText().trim()).collect(Collectors.toList());
+    }
+    public String navigateOnCalenderThroughDashBoard() throws InterruptedException {
+        selenium.click(calenderViewAllButton);
+        String calenderHeader = calenderTitle.getText();
+        selenium.click(homeTab);
+        return calenderHeader;
 
+    }
 
-   //   }
+    public String navigateOnEventPage() throws InterruptedException {
+        selenium.click(eventViewAllButton);
+        String eventsPageTitle = eventPageTitle.getText();
+        selenium.hardWait(2);
+        selenium.click(backButtonOfEventPage);
+        return eventsPageTitle;
+    }
 
-//    public List<String> getDashboardTabList() {
-//        List<WebElement>subTabList = driver.findElements(By.xpath("//div[@class='card custom-card ng-star-inserted']"));
-//        return subTabList.stream().map(x -> x.getText().trim()).collect(Collectors.toList());
-  //  }
+    public String navigateOnMyListPage() throws InterruptedException {
+        selenium.click(myListViewAllButton);
+        String myListPageTitle = myListPageTitleText.getText();
+        selenium.click(myListBackButton);
+        return myListPageTitle;
+    }
+
 
 }
