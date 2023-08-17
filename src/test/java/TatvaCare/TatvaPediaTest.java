@@ -57,7 +57,7 @@ public class TatvaPediaTest extends BaseTest {
         tatvapedia.clearAll();
 
 
-        tatvapedia.check();
+        tatvapedia.UnselectAllFilterAnvVerify();
         tatvapedia.clickOnApplyFilterButton();
         String textResult=tatvapedia.resultOfUnselectAllFilters();
         Assert.assertEquals(textResult,"You have not selected any filter. Please Select a filter.");
