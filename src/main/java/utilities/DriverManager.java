@@ -33,6 +33,8 @@ public class DriverManager
 
             case "chrome":
                 WebDriverManager.chromedriver().setup();
+                //C:\Users\hlink\Desktop\Tatvacare\Tatvacare-Har\src\main\resources\drivers\chromedriver.exe
+                System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
                 //Create a map to store  preferences
                 Map<String, Object> prefs = new HashMap<>();
                 //add key and value to map as follow to switch off browser notification
