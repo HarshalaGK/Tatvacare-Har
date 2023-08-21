@@ -43,8 +43,8 @@ public class PubmedPO extends BasePO {
     @FindBy(xpath = "//textarea[@id='message']")
     private WebElement messageBoxForRequest;
 
-//    @FindBy(xpath = "//button[text()='Send Article Request ']")
-//    private WebElement
+    @FindBy(xpath = "//button[text()='Send Article Request ']")
+    private WebElement sendRequest;
 
     public void navigateOnPubmed() throws InterruptedException {
         selenium.getWindowHandles();
@@ -118,7 +118,7 @@ public class PubmedPO extends BasePO {
     public void requestArticle() throws InterruptedException {
         selenium.clickOn(requestArticleButton);
         selenium.enterText(messageBoxForRequest, "Want to read full Article", true);
-        selenium.clickOn();
+        selenium.clickOn(sendRequest);
 
     }
 
