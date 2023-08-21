@@ -153,6 +153,10 @@ public class JavaHelpers {
     public String getRandomNumber(int maxNumber, int minNumber) {
         return String.valueOf( Math.floor(Math.random() * ((maxNumber) - minNumber) + minNumber));
     }
+
+    public static int  getRandomNumberInInteger(int maxNumber, int minNumber) {
+        return (int) Math.floor(Math.random() * ((maxNumber) - minNumber) + minNumber);
+    }
     //Reading system properties
 
     /**

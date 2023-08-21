@@ -55,6 +55,9 @@ public class TatvaPediaPO extends BasePO {
     @FindBy(xpath = "//a[@class='text-decoration-none clear-all clear-all-new mr-2']")
     private WebElement clearAllButton;
 
+    @FindBy(xpath = "//button[@class='btn btn-outline-primary btn-sm px-3 blue-btn']")
+    private WebElement shareButton;
+
 
     public void navigateOnTatvapedia() {
         selenium.getWindowHandles();
@@ -156,6 +159,22 @@ public class TatvaPediaPO extends BasePO {
     public String randomSelectContentPageTitleText() throws InterruptedException {
         return selenium.getText(contentPageTitleText);
     }
+
+    public void shareButton() throws InterruptedException{
+        selenium.click(shareButton);
+    }
+    public void shareTheContentInOptionsList()throws InterruptedException{
+        List<WebElement> socialMediaOptions=driver.findElements(By.xpath("//li[@class='ng-tns-c269-35 p-menuitem ng-star-inserted']"));
+       // String randomNumber = (java.getRandomNumber(socialMediaOptions.size()-1, 1));
+        for (int i=0;i<socialMediaOptions.size()-1;i++){
+            selenium.hardWait(2);
+            WebElement option = socialMediaOptions.get(i);
+            selenium.hardWait(3);
+           // System.out.println(option.getText());
+
+        }
+    }
+
     public void backOnContentDetailPage()throws InterruptedException{
         selenium.click(backButtonOnContentDetailPage);
     }

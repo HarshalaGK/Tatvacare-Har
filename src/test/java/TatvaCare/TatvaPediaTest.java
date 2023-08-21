@@ -24,8 +24,6 @@ public class TatvaPediaTest extends BaseTest {
         Reporter.log("Step 1: Navigate On Tatvapedia Tab");
         tatvapedia.navigateOnTatvapedia();
         tatvapedia.unselectSpeciality();   //unselect any selected speciality
-//        tatvapedia.check();
-//        tatvapedia.clickOnApplyFilterButton();
 
         Reporter.log("Step 2: Search text in searchbar and verify result");
         // give any text for search
@@ -53,15 +51,16 @@ public class TatvaPediaTest extends BaseTest {
         String contentTitle = tatvapedia.selectRandomContentOfAppliedFilter();
         String contentPageTitleText = tatvapedia.randomSelectContentPageTitleText();
         Assert.assertEquals(contentPageTitleText, contentTitle);
+        tatvapedia.shareButton();
+       // tatvapedia.shareTheContentInOptionsList();
         tatvapedia.backOnContentDetailPage();
         tatvapedia.clearAll();
 
-
+        Reporter.log("Step 6: Unselect All Filters And Verify The Result");
         tatvapedia.UnselectAllFilterAnvVerify();
         tatvapedia.clickOnApplyFilterButton();
         String textResult=tatvapedia.resultOfUnselectAllFilters();
         Assert.assertEquals(textResult,"You have not selected any filter. Please Select a filter.");
-//
 
 //
 //       // tatvapedia.unSelectCheckBoxOfContinuum("Continuum");
