@@ -1,7 +1,9 @@
 package AdminPortal;
 
 import base.BaseTest;
+import datafactory.AdminLoginData;
 import datafactory.LoginData;
+import dataobjects.AdminLogin;
 import dataobjects.Login;
 import functions.LoginFunction;
 import io.qameta.allure.Description;
@@ -19,7 +21,14 @@ public class AdminLoginTest extends BaseTest {
     @Story("Valid Username and Password")
     public void enterAdminLoginCredentialsAndClickOnLoginButton() throws InterruptedException {
 
-        Login loginData = new LoginData().getLoginData();
+        AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
+        Reporter.log("Step 1: Navigate to URl");
+        selenium.navigateToPage("https://diginextdev.b2clogin.com/");
+        Reporter.log("Step 2: Enter AdminMobileNumber, AdminPassword and click on the login button");
+        //new LoginFunction(driver, selenium).loginIntoApplicationByUser(Constants.MobileNumber, Constants.Password);
+        new LoginFunction(driver, selenium).loginIntoApplicationByUser(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
+
+     //  Login loginData = new LoginData().getLoginData();
 //        Reporter.log("Step 1: Navigate to URl");
 //        selenium.navigateToPage("https://diginextdev.b2clogin.com/");
 //        Reporter.log("Step 2: Enter mobileNumber, password and click on the login button");
