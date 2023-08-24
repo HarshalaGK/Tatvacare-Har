@@ -28,7 +28,7 @@ public class TatvaPediaTest extends BaseTest {
         Reporter.log("Step 2: Search text in searchbar and verify result");
         // give any text for search
         tatvapedia.SearchBarFunctionality("nose");
-        String searchResultPageTitleText=tatvapedia.searchResultPageTitle();
+        String searchResultPageTitleText = tatvapedia.searchResultPageTitle();
         Assert.assertEquals(searchResultPageTitleText,"Search Results");
         tatvapedia.clickOnRandomFilterOFSearchResultPage();
         tatvapedia.backButton();

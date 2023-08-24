@@ -30,11 +30,5 @@ public class LoginFunction {
         LoginPO login = new LoginPO(driver);
         login.enterValidMobileNumAndVerifyValidationMessage(mobileNumber);
     }
-    public void navigateOnHomeTab()throws InterruptedException{
-        HomePO homePO = new HomePO(driver);
-        homePO.loginAndClickOnHomeTab();
-       // homePO.SubTabOnHomePageList();
-
-    }
 
 }
