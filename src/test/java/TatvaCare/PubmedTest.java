@@ -37,17 +37,17 @@ public class PubmedTest extends BaseTest {
         pubmed.readArticle();
 
         Reporter.log("Step 5: Request To Full Article And Ckeck A ");
-//        List<String> buttonTextList = pubmed.requestArticleAndValidateButtonText();
-//        Assert.assertEquals(buttonTextList.get(0).trim(),"Request full article");
-//        Assert.assertEquals(buttonTextList.get(1).trim(),"Article requested");
-//        //pubmed.BckOnDetailPage();
+        List<String> buttonTextList = pubmed.requestArticleAndValidateButtonText();
+        Assert.assertEquals(buttonTextList.get(0).trim(),"Request full article");
+        Assert.assertEquals(buttonTextList.get(1).trim(),"Article requested");
+        //pubmed.BckOnDetailPage();
 
         Reporter.log("Step 6: View All Request And Verify The Requested And List Article Is Same ");
-        //  pubmed.viewAllRequest();
-//        pubmed.checkAllRequestPage();
-  //      String text= pubmed.allRequestViewInProgress();
-//       Assert.assertEquals(articleName,text);
-        //pubmed.BckOnDetailPage();
+        pubmed.viewAllRequest();
+        pubmed.checkAllRequestPage();
+        String text= pubmed.allRequestViewInProgress();
+        Assert.assertEquals(articleName,text);
+        pubmed.BckOnDetailPage();
 
         Reporter.log("Step 7: Selected Content Add  In Favourite List And Share The Content");
         pubmed.addFavourite();

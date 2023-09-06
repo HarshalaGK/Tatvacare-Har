@@ -2,7 +2,6 @@ package functions;
 
 import org.openqa.selenium.WebDriver;
 import pageobjects.AdminPortal.Admin_LoginPO;
-import pageobjects.TatvaCare.LoginPO;
 import utilities.SeleniumHelpers;
 
 public class Admin_LoginFunction {
@@ -14,6 +13,7 @@ public class Admin_LoginFunction {
     }
     public void loginByAdmin(String mobileNumber, String password) throws InterruptedException {
         Admin_LoginPO adminLogin = new Admin_LoginPO(driver);
+        selenium.navigateToPage("https://hlinkadmin.azureedge.net/");
         adminLogin.enterAdminLoginCredentialsAndClickOnLoginButton(mobileNumber, password);
     }
 

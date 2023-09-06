@@ -5,6 +5,7 @@ import datafactory.AdminLoginData;
 import datafactory.LoginData;
 import dataobjects.AdminLogin;
 import dataobjects.Login;
+import functions.Admin_LoginFunction;
 import functions.LoginFunction;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
@@ -23,17 +24,11 @@ public class AdminLoginTest extends BaseTest {
 
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         Reporter.log("Step 1: Navigate to URl");
-        selenium.navigateToPage("https://diginextdev.b2clogin.com/");
-        Reporter.log("Step 2: Enter AdminMobileNumber, AdminPassword and click on the login button");
-        //new LoginFunction(driver, selenium).loginIntoApplicationByUser(Constants.MobileNumber, Constants.Password);
-        new LoginFunction(driver, selenium).loginIntoApplicationByUser(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
+      //  selenium.navigateToPage("https://hlinkadmin.azureedge.net/");
 
-     //  Login loginData = new LoginData().getLoginData();
-//        Reporter.log("Step 1: Navigate to URl");
-//        selenium.navigateToPage("https://diginextdev.b2clogin.com/");
-//        Reporter.log("Step 2: Enter mobileNumber, password and click on the login button");
-//        // new LoginFunction(driver, selenium).loginIntoApplicationByUser(Constants.MobileNumber, Constants.Password);
-//        new LoginFunction(driver, selenium).loginIntoApplicationByUser(loginData.getMobileNumber(), loginData.getPassword());
+        Reporter.log("Step 2: Enter AdminMobileNumber, AdminPassword and click on the login button");
+        new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
+
     }
 
 }

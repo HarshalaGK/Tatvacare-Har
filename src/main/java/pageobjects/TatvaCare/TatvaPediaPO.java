@@ -190,8 +190,8 @@ public class TatvaPediaPO extends BasePO {
 
     public void UnselectAllFilterAnvVerify() throws InterruptedException{
         List<WebElement> filtersSelectButtons = driver.findElements(By.xpath("//a[@class='text-decoration-none clear-all']"));
-
         // Loop through the buttons and toggle their selection
+
         for (WebElement filterButton : filtersSelectButtons) {
 
             if (filterButton.isSelected()) {
@@ -211,7 +211,6 @@ public class TatvaPediaPO extends BasePO {
         textResult  =driver.findElement(By.xpath("//div[@class='col-12 mt-4']")).getText();
      return textResult;
     }
-
 
      }
 
