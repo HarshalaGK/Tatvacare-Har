@@ -6,8 +6,8 @@ import dataobjects.Login;
 public class AdminLoginData {
     public AdminLogin getAdminLoginData() {
         AdminLogin adminLogin = new AdminLogin();
-        adminLogin.setAdminMobileNumber("9426041053");
-        adminLogin.setAdminPassword("Hlink@123");
+        adminLogin.setAdminMobileNumber("9871434312");
+        adminLogin.setAdminPassword("Dhspl@123");
         return adminLogin;
     }
 }

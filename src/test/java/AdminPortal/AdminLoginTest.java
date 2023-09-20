@@ -24,9 +24,9 @@ public class AdminLoginTest extends BaseTest {
 
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         Reporter.log("Step 1: Navigate to URl");
-      //  selenium.navigateToPage("https://hlinkadmin.azureedge.net/");
-
-        Reporter.log("Step 2: Enter AdminMobileNumber, AdminPassword and click on the login button");
+       // selenium.navigateToPage("https://hlinkadmin.azureedge.net/");
+        Reporter.log("Step 2: Enter mobileNumber, password and click on the login button");
+        // new LoginFunction(driver, selenium).loginIntoApplicationByUser(Constants.MobileNumber, Constants.Password);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
 
     }
