@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="1" ignored="0" total="1" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="3" passed="3">
   <reporter-output>
     <line>
       <![CDATA[Step 1: Navigate to URl]]>
     </line>
     <line>
-      <![CDATA[Step 2: Enter username, password and click on the login button]]>
+      <![CDATA[Step 2: Click on the login button]]>
+    </line>
+    <line>
+      <![CDATA[Step 1: Navigate to URl]]>
+    </line>
+    <line>
+      <![CDATA[Step 2: Enter invalid mobile number, invalid password and click on the login button]]>
+    </line>
+    <line>
+      <![CDATA[Step : Verify the validation message]]>
+    </line>
+    <line>
+      <![CDATA[Step 1: Navigate to URl]]>
+    </line>
+    <line>
+      <![CDATA[Step 2: Enter mobileNumber, password and click on the login button]]>
     </line>
   </reporter-output>
-  <suite name="Positive Cases" duration-ms="69270" started-at="2023-08-02T17:02:54 IST" finished-at="2023-08-02T17:04:03 IST">
+  <suite name="Positive Cases" duration-ms="59197" started-at="2023-09-05T18:48:24 IST" finished-at="2023-09-05T18:49:23 IST">
     <groups>
     </groups>
-    <test name="register, service and purchase invoice, company, and export data Cases" duration-ms="69270" started-at="2023-08-02T17:02:54 IST" finished-at="2023-08-02T17:04:03 IST">
+    <test name="register, service and purchase invoice, company, and export data Cases" duration-ms="59197" started-at="2023-09-05T18:48:24 IST" finished-at="2023-09-05T18:49:23 IST">
       <class name="TatvaCare.LoginTest">
-        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="setUp" is-config="true" duration-ms="5258" started-at="2023-08-02T17:02:54 IST" finished-at="2023-08-02T17:03:00 IST">
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="setUp" is-config="true" duration-ms="6844" started-at="2023-09-05T18:48:24 IST" finished-at="2023-09-05T18:48:31 IST">
           <params>
             <param index="0">
               <value>
@@ -24,94 +39,88 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method status="FAIL" signature="enterLoginCredentialsAndClickOnLoginButton()[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="enterLoginCredentialsAndClickOnLoginButton" duration-ms="62441" started-at="2023-08-02T17:03:00 IST" description="Login with valid credentials. " finished-at="2023-08-02T17:04:02 IST">
-          <exception class="org.openqa.selenium.TimeoutException">
-            <message>
-              <![CDATA[Expected condition failed: waiting for element to be clickable: Proxy element for: AjaxElementLocator 'By.id: user-name' (tried for 20 second(s) with 500 milliseconds interval)]]>
-            </message>
-            <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: Proxy element for: AjaxElementLocator 'By.id: user-name' (tried for 20 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:138)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:231)
-at utilities.WaitHelpers.waitTillElementIsClickable(WaitHelpers.java:34)
-at utilities.SeleniumHelpers.enterText(SeleniumHelpers.java:61)
-at pageobjects.TatvaCare.LoginPO.enterLoginCredentialsAndClickOnLoginButton(LoginPO.java:38)
-at functions.LoginFunction.loginIntoApplicationByUser(LoginFunction.java:17)
-at TatvaCare.LoginTest.enterLoginCredentialsAndClickOnLoginButton(LoginTest.java:26)
-at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-at java.lang.reflect.Method.invoke(Method.java:498)
-at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:135)
-at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:673)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:220)
-at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:50)
-at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:945)
-at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:193)
-at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
-at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-at java.lang.Thread.run(Thread.java:748)
-Caused by: org.openqa.selenium.NoSuchElementException: Timed out after 10 seconds. Unable to locate the element
-at org.openqa.selenium.support.pagefactory.AjaxElementLocator.findElement(AjaxElementLocator.java:99)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:39)
-at com.sun.proxy.$Proxy22.isDisplayed(Unknown Source)
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:307)
-at org.openqa.selenium.support.ui.ExpectedConditions.access$000(ExpectedConditions.java:40)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:293)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:660)
-at org.openqa.selenium.support.ui.ExpectedConditions$23.apply(ExpectedConditions.java:656)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:208)
-... 20 more
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#user\-name"}
-  (Session info: chrome=115.0.5790.110)
-For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
-Build info: version: '4.1.1', revision: 'e8fcc2cecf'
-System info: host: 'DESKTOP-AU7IRSP', ip: '192.168.0.8', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_202'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [b9d2b2c136b964101142b191f1aeafca, findElement {using=id, value=user-name}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 115.0.5790.110, chrome: {chromedriverVersion: 114.0.5735.90 (386bc09e8f4f..., userDataDir: C:\Users\hlink\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:52493}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:52493/devtoo..., se:cdpVersion: 115.0.5790.110, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: b9d2b2c136b964101142b191f1aeafca
-at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
-at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:53)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:184)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:167)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:142)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:543)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:162)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:60)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:367)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:359)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:70)
-at org.openqa.selenium.support.pagefactory.AjaxElementLocator.access$001(AjaxElementLocator.java:39)
-at org.openqa.selenium.support.pagefactory.AjaxElementLocator$SlowLoadingElement.isLoaded(AjaxElementLocator.java:165)
-at org.openqa.selenium.support.ui.SlowLoadableComponent.get(SlowLoadableComponent.java:72)
-at org.openqa.selenium.support.pagefactory.AjaxElementLocator.findElement(AjaxElementLocator.java:95)
-... 29 more
-]]>
-            </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+        <test-method status="PASS" signature="clickOnLoginButtonWithoutFillRequiredField()[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="clickOnLoginButtonWithoutFillRequiredField" duration-ms="11105" started-at="2023-09-05T18:48:31 IST" description="Click On Login Button withot Filled Mobile Number and Password." finished-at="2023-09-05T18:48:42 IST">
           <reporter-output>
             <line>
               <![CDATA[Step 1: Navigate to URl]]>
             </line>
             <line>
-              <![CDATA[Step 2: Enter username, password and click on the login button]]>
+              <![CDATA[Step 2: Click on the login button]]>
             </line>
           </reporter-output>
-        </test-method> <!-- enterLoginCredentialsAndClickOnLoginButton -->
-        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="tearDown" is-config="true" duration-ms="1340" started-at="2023-08-02T17:04:02 IST" finished-at="2023-08-02T17:04:03 IST">
+        </test-method> <!-- clickOnLoginButtonWithoutFillRequiredField -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="tearDown" is-config="true" duration-ms="913" started-at="2023-09-05T18:48:42 IST" finished-at="2023-09-05T18:48:43 IST">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=enterLoginCredentialsAndClickOnLoginButton status=FAILURE method=LoginTest.enterLoginCredentialsAndClickOnLoginButton()[pri:0, instance:TatvaCare.LoginTest@6b26e945] output=Step 1: Navigate to URl]]]>
+                <![CDATA[[TestResult name=clickOnLoginButtonWithoutFillRequiredField status=SUCCESS method=LoginTest.clickOnLoginButtonWithoutFillRequiredField()[pri:0, instance:TatvaCare.LoginTest@6b26e945] output=Step 1: Navigate to URl]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="setUp" is-config="true" duration-ms="3205" started-at="2023-09-05T18:48:43 IST" finished-at="2023-09-05T18:48:46 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="enterInvalidLoginCredentialsAndClickOnLoginButton()[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="enterInvalidLoginCredentialsAndClickOnLoginButton" duration-ms="10115" started-at="2023-09-05T18:48:46 IST" description="Login with invalid credentials. " finished-at="2023-09-05T18:48:56 IST">
+          <reporter-output>
+            <line>
+              <![CDATA[Step 1: Navigate to URl]]>
+            </line>
+            <line>
+              <![CDATA[Step 2: Enter invalid mobile number, invalid password and click on the login button]]>
+            </line>
+            <line>
+              <![CDATA[Step : Verify the validation message]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- enterInvalidLoginCredentialsAndClickOnLoginButton -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="tearDown" is-config="true" duration-ms="1210" started-at="2023-09-05T18:48:56 IST" finished-at="2023-09-05T18:48:57 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=enterInvalidLoginCredentialsAndClickOnLoginButton status=SUCCESS method=LoginTest.enterInvalidLoginCredentialsAndClickOnLoginButton()[pri:0, instance:TatvaCare.LoginTest@6b26e945] output=Step 1: Navigate to URl]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+        <test-method status="PASS" signature="setUp(java.lang.String)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="setUp" is-config="true" duration-ms="3042" started-at="2023-09-05T18:48:57 IST" finished-at="2023-09-05T18:49:00 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[chrome]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="enterLoginCredentialsAndClickOnLoginButton()[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="enterLoginCredentialsAndClickOnLoginButton" duration-ms="21141" started-at="2023-09-05T18:49:00 IST" description="Login with valid credentials. " finished-at="2023-09-05T18:49:22 IST">
+          <reporter-output>
+            <line>
+              <![CDATA[Step 1: Navigate to URl]]>
+            </line>
+            <line>
+              <![CDATA[Step 2: Enter mobileNumber, password and click on the login button]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- enterLoginCredentialsAndClickOnLoginButton -->
+        <test-method status="PASS" signature="tearDown(org.testng.ITestResult)[pri:0, instance:TatvaCare.LoginTest@6b26e945]" name="tearDown" is-config="true" duration-ms="1310" started-at="2023-09-05T18:49:22 IST" finished-at="2023-09-05T18:49:23 IST">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=enterLoginCredentialsAndClickOnLoginButton status=SUCCESS method=LoginTest.enterLoginCredentialsAndClickOnLoginButton()[pri:0, instance:TatvaCare.LoginTest@6b26e945] output=Step 1: Navigate to URl]]]>
               </value>
             </param>
           </params>

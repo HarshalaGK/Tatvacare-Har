@@ -66,11 +66,15 @@ public class HomePO extends BasePO {
     }
 
     public List<String> getDashboardTabNameList() {
-        List<WebElement>subTabList = driver.findElements(By.xpath("//div[@class='card custom-card ng-star-inserted']"));
+        List<WebElement>subTabList = driver.findElements(By.xpath("//h3[contains(@class,'heading mb')]"));
+        System.out.println("Sub list is: "+subTabList.size());
         return subTabList.stream().map(x -> x.getText().trim()).collect(Collectors.toList());
     }
+
+
     public String navigateOnCalenderThroughDashBoard() throws InterruptedException {
         selenium.click(calenderViewAllButton);
+        selenium.hardWait(2);
         String calenderHeader = calenderTitle.getText();
         selenium.click(homeTab);
         return calenderHeader;

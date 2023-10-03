@@ -5,12 +5,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageobjects.base.BasePO;
+import utilities.Constants;
 
 public class LoginPO extends BasePO {
     public LoginPO(WebDriver driver) {
         super(driver);
     }
-
 
     /*
      * All WebElements are identified by @FindBy annotation
@@ -37,8 +37,6 @@ public class LoginPO extends BasePO {
 
 
 
-
-
     /**
      * Enter login credentials and click on the login button
      *
@@ -48,6 +46,7 @@ public class LoginPO extends BasePO {
      */
     @Step("Enter MobileNumber: [0], password [1] and click on Login button")
     public void enterLoginCredentialsAndClickOnLoginButton(String mobileNumber, String password) throws InterruptedException {
+        //selenium.navigateToPage(Constants.URL);
         selenium.enterText(mobileNumberTextBox, mobileNumber , true);
         selenium.enterText(passwordTextBox, password , true);
         selenium.click(loginButton);
@@ -69,15 +68,14 @@ public class LoginPO extends BasePO {
     }
     public String ValidationMessageForRequiredFieldMissing()throws InterruptedException{
         return selenium.getText(requiredFieldMissingMessage);
-
     }
+
     @Step("Enter InvalidMobileNumber: [0]and click on Login button")
     public void enterValidMobileNumAndVerifyValidationMessage(String mobileNumber) throws InterruptedException {
         selenium.enterText(mobileNumberTextBox, mobileNumber, true);
         selenium.hardWait(3);
         selenium.click(loginButton);
         selenium.hardWait(5);
-
     }
     public String ValidationMessageForPasswordRequired()throws InterruptedException {
         return selenium.getText(passwordRequireMessage);

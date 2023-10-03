@@ -14,21 +14,30 @@ import java.util.List;
 
 public class TatvaPediaTest extends BaseTest {
 
-    @Test(priority = 0, description = "Login and navigate on Tatavpedoa Tab")
+    @Test(priority = 0, description = "Login and navigate on Tatavpedia Tab")
     public void checkSelectAllButton()throws InterruptedException {
         Login loginData = new LoginData().getLoginData();
         selenium.navigateToPage(Constants.URL);
         new LoginFunction(driver, selenium).loginIntoApplicationByUser(loginData.getMobileNumber(), loginData.getPassword());
         TatvaPediaPO tatvapedia = new TatvaPediaPO(driver);
+
         Reporter.log("Step 1: Navigate On Tatvapedia Tab");
         tatvapedia.navigateOnTatvapedia();
-        Reporter.log("Step 2: Unselect All Filter in Genre");
+        tatvapedia.unselectSpeciality();   //unselect any selected speciality
 
+        Reporter.log("Step 2: Search text in searchbar and verify result");
+        // give any text for search
+        tatvapedia.SearchBarFunctionality("hand");
+        String searchResultPageTitleText = tatvapedia.searchResultPageTitle();
+        Assert.assertEquals(searchResultPageTitleText,"Search Results");
+        tatvapedia.clickOnRandomFilterOFSearchResultPage();
+        tatvapedia.backButton();
+
+
+        Reporter.log("Step 3: Unselect All Filter in Genre And Verify The Result ");
         List <String> buttonTextList = tatvapedia.unSelectorSelectCheckBoxOfGenre();
         Assert.assertEquals(buttonTextList.get(0).trim(),"Unselect All");
         Assert.assertEquals(buttonTextList.get(1).trim(),"Select All");
-
-        Reporter.log("Step 3: Unselect All Filter in Genre And Verify The Result");
         String noRecord=tatvapedia.resultOfUnselectGenreFilter();
         Assert.assertEquals(noRecord,"No Records Found.");
 
@@ -42,14 +51,17 @@ public class TatvaPediaTest extends BaseTest {
         String contentTitle = tatvapedia.selectRandomContentOfAppliedFilter();
         String contentPageTitleText = tatvapedia.randomSelectContentPageTitleText();
         Assert.assertEquals(contentPageTitleText, contentTitle);
+        tatvapedia.shareButton();
+       // tatvapedia.shareTheContentInOptionsList();
+        tatvapedia.backOnContentDetailPage();
+        tatvapedia.clearAll();
 
+        Reporter.log("Step 6: Unselect All Filters And Verify The Result");
+        tatvapedia.UnselectAllFilterAndVerify();
+        tatvapedia.clickOnApplyFilterButton();
+        String textResult=tatvapedia.resultOfUnselectAllFilters();
+        Assert.assertEquals(textResult,"You have not selected any filter. Please Select a filter.");
 
-
-//
-//        Reporter.log("Step 3: Unselect All Filter in Genre And Verify The Result");
-//        String noRecord=tatvapedia.resultOfUnselectGenreFilter();
-//        Assert.assertEquals(noRecord,"No Records Found.");
-//        Reporter.log("Step 4: select any filter option in Genre and Verify the result");
 //
 //       // tatvapedia.unSelectCheckBoxOfContinuum("Continuum");
 

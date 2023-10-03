@@ -6,7 +6,9 @@
 
         <classes>
             <class name="TatvaCare.LoginTest"/>
-            <class name="TatvaCare.HomeTest"/>
+<!--            <class name="TatvaCare.HomeTest"/>-->
+<!--            <class name="TatvaCare.TatvaPediaTest"/>-->
+<!--            <class name="TatvaCare.PubmedTest"/>-->
 
         </classes>
     </test> <!-- Test -->

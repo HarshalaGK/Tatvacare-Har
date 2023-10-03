@@ -28,7 +28,9 @@ public class HomeTest extends BaseTest{
         selenium.navigateToPage(Constants.URL);
         new LoginFunction(driver, selenium).loginIntoApplicationByUser(loginData.getMobileNumber(), loginData.getPassword());
         Reporter.log("Step 1: Click On HomeTab");
-        new LoginFunction(driver,selenium).navigateOnHomeTab();
+        homePO.loginAndClickOnHomeTab();
+        //new LoginFunction(driver,selenium).navigateOnHomeTab();
+
 
         List<String> subtabList = homePO.getDashboardTabNameList();
         Reporter.log("Step 2: Dashboard Tab List:"+subtabList);
