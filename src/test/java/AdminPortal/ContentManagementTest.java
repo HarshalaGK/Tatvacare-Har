@@ -13,7 +13,7 @@ import pageobjects.AdminPortal.ContentManagementPO;
 
 public class ContentManagementTest extends BaseTest {
 
-    @Test(priority = 0, description = "Login In Admin Portal And Click On Content Management Tab")
+    @Test(priority = 0, description = "Login In Admin Portal and create Editorial Research Content")
     public void editorialsResearchContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
@@ -47,6 +47,7 @@ public class ContentManagementTest extends BaseTest {
         Assert.assertEquals(massage,"Content file uploaded successfully.");
     }
 
+    @Test(priority = 1, description = "Login In Admin Portal And Create Expert Opinion Content ")
     public void expertOpinion() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
@@ -75,6 +76,9 @@ public class ContentManagementTest extends BaseTest {
         content.saveContent();
         selenium.hardWait(3);
     }
+
+
+    @Test(priority = 2, description = "Login In Admin Portal And Create Infographic Content ")
     public void InfographicsContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
@@ -103,6 +107,8 @@ public class ContentManagementTest extends BaseTest {
         content.saveContent();
         selenium.hardWait(3);
     }
+
+    @Test(priority = 3, description = "Login In Admin Portal And Create Medical Slide Library Content ")
     public void MedicalSlideLibraryContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
@@ -131,6 +137,8 @@ public class ContentManagementTest extends BaseTest {
         selenium.hardWait(3);
     }
 
+
+    @Test(priority = 4, description = "Login In Admin Portal And Create Podcast Content ")
     public void PodcastsContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
@@ -160,6 +168,8 @@ public class ContentManagementTest extends BaseTest {
         content.saveContent();
         selenium.hardWait(3);
     }
+
+    @Test(priority = 5, description = "Login In Admin Portal And Create Webinars Content ")
     public void WebinarsAndPanelDiscussions() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);

@@ -138,8 +138,8 @@ public class ContentManagementPO extends BasePO {
        public void therapyBasedTag(String tag){
             therapyBasedTabBox.sendKeys(tag);
        }
-       public void descriptionBasedTag(String dTag){
-            descriptionBasedTagBox.sendKeys(dTag);
+       public void descriptionBasedTag(String Tag){
+            descriptionBasedTagBox.sendKeys(Tag);
        }
        public void wordCountOfText(String wordCount){
             wordCountBox.sendKeys(wordCount);
@@ -203,6 +203,8 @@ public class ContentManagementPO extends BasePO {
       String text= driver.findElement(By.xpath("//div[text()='Content file uploaded successfully.']")).getText();
    return text;
     }
+
+
 
 
 
