@@ -18,15 +18,15 @@ public class EventManagementTest extends BaseTest {
         event.eventManageTab();
         event.createEvent();
         event.contentId("6345327");
-        event.eventTitle("Externat Event");
+        event.eventTitle("External Event");
         selenium.hardWait(1);
         event.selectEventType();
         event.externalEvent();
         event.selectStartDateAndEndDate();
-       String specialityType=  event.selectSpeciality();
-       selenium.hardWait(10);
-       event.selectScheduleDate();
-       event.publishEvent();
+        String specialityType=  event.selectSpeciality();
+        selenium.hardWait(10);
+        event.selectScheduleDate();
+        event.publishEvent();
 
 
 

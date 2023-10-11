@@ -20,8 +20,9 @@ public class HomePO extends BasePO {
       @FindBy(id="navItemHome")
       private WebElement homeTab;
 
-   // @FindBy(xpath = "//div[@class='card-body']//div[@class='col-auto mr-auto']")
- //   private WebElement subTabList;
+    @FindBy(xpath = "//div[@class='card-body']//div[@class='col-auto mr-auto']")
+    private WebElement subTabList;
+
     @FindBy(xpath ="//div[@class='card custom-card ng-star-inserted']")
     private WebElement nunOfTab;
 

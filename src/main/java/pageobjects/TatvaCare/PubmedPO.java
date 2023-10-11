@@ -31,7 +31,7 @@ public class PubmedPO extends BasePO {
     @FindBy(xpath = "//button[text()='Send Email']")
     private WebElement sendEmailButton;
 
-    @FindBy(css = "a[class='hovers ng-tns-c425-16']")
+    @FindBy(xpath = "//div[@class='col-auto']//span[text()='Article Request List']")
     private WebElement backButton;
 
     @FindBy(xpath = "//a[text()='Read article']")
@@ -53,7 +53,7 @@ public class PubmedPO extends BasePO {
     @FindBy(xpath = "//a[text()='View all Request']")
     private WebElement viewAllRequestButton;
 
-    @FindBy(xpath = "//div[@class='mat-select-arrow ng-tns-c83-187']")
+    @FindBy(xpath = "//div[contains(@class,'mat-select-arrow-wrapper ng-tns')]")
     private WebElement statusDropDown;
 
     @FindBy(xpath = "//*[text()=' Add to favourite ']")
@@ -68,6 +68,12 @@ public class PubmedPO extends BasePO {
     @FindBy(xpath = "//a[text()='Additonal filters']")
     private WebElement additionalFilterButton;
 
+    @FindBy(xpath = "//button[text()='Submit']")
+    private WebElement customDateSubmitButton;
+
+    @FindBy(xpath = "//button[contains(text(),'Apply Filters')]")
+    private WebElement applyFilterButtonForAdditionFilter;
+
 
     public void navigateOnTcOrWindowHandle() throws InterruptedException {
         selenium.getWindowHandles();
@@ -80,17 +86,17 @@ public class PubmedPO extends BasePO {
     }
 
     @Step("Search any word in searchBar ")
-    public void SearchBarInPubmed(String text) throws InterruptedException {
-        WebElement x = driver.findElement(By.xpath("//input[@role='searchbox']"));
-        selenium.enterText(x, text, true);
-        selenium.hardWait(2);
+    public void searchBarInPubmed(String text) throws InterruptedException {
+        WebElement searchBar = driver.findElement(By.xpath("//input[@role='searchbox']"));
+        selenium.enterText(searchBar, text, true);
+        selenium.hardWait(1);
         //  driver.findElement(By.xpath("//input[@role='searchbox']")).sendKeys(text);
         return;
     }
 
     @Step("Select Any Suggestion and  navigate search result page")
     public void selectRandomSuggestion() throws InterruptedException {
-        selenium.hardWait(5);
+        selenium.hardWait(3);
         List<WebElement> suggestionOptionList = driver.findElements(By.xpath("//ul[@role='listbox']/li"));
         int randomNumber = JavaHelpers.getRandomNumberInInteger(suggestionOptionList.size(), 2);
         System.out.println("Random Number is: " + randomNumber);
@@ -134,11 +140,11 @@ public class PubmedPO extends BasePO {
         selenium.switchToWindow(1);
     }
 
-    public void BckOnDetailPage() throws InterruptedException {
+    public void bckOnDetailPage() throws InterruptedException {
         // selenium.pageScrollInView(backButton);
         selenium.hardWait(3);
-        // selenium.clickOn(backButton);
-        selenium.javascriptClickOn(backButton);
+        selenium.clickOn(backButton);
+
     }
 
     @Step("Click On Unselect Button ")
@@ -161,10 +167,10 @@ public class PubmedPO extends BasePO {
         selenium.click(viewAllRequestButton);
     }
 
-    public void checkAllRequestPage() throws InterruptedException {
+    public void checkAllRequestInPage() throws InterruptedException {
+        selenium.hardWait(3);
         selenium.clickOn(statusDropDown);
-        Select select = new Select(statusDropDown);
-        select.selectByVisibleText("In Process");
+        driver.findElement(By.xpath("//mat-option//span[text()='In Process']")).click();
         selenium.hardWait(3);
     }
 
@@ -173,6 +179,7 @@ public class PubmedPO extends BasePO {
         text = driver.findElement(By.xpath("//div[@class='pos-scroll ng-star-inserted']//div[1]//div[1]//div[1]")).getText();
         return text;
     }
+
     public void addFavourite() throws InterruptedException {
         selenium.click(addToFavouriteButton);
     }
@@ -182,44 +189,145 @@ public class PubmedPO extends BasePO {
         int randomNumber = JavaHelpers.getRandomNumberInInteger(shareIconList.size() - 1, 1);
         driver.findElement(By.xpath("//ul//li[starts-with(@class,'mr-3')][" + randomNumber + "]")).click();
     }
-    public void applyFilter()throws InterruptedException{
+
+    public void applyFilter() throws InterruptedException {
         selenium.click(applyFilterButton);
     }
 
-    public void clearAll()throws InterruptedException{
+    public void clearAll() throws InterruptedException {
         selenium.click(clearAllButton);
     }
 
     @Step("Select Any Filter In Text Availability")
     public void selectFilterInTextAvailability() throws InterruptedException {
-        List<WebElement> filterList = driver.findElements(By.xpath("//div[@id='contentGenreFilter']//div[@class='mb-1 ng-star-inserted']"));
-        int randomNumber = JavaHelpers.getRandomNumberInInteger(filterList.size(), 1);
-        // System.out.println("Random Number is: " + randomNumber);
-        driver.findElement(By.xpath("//div[@id='contentGenreFilter']//div[@class='mb-1 ng-star-inserted']//span[" + randomNumber + "]")).click();
+        List<WebElement> filterList = driver.findElements(By.xpath("//div[@id='contentGenreFilter']//app-checkbox//span"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(filterList.size(), 2);
+        System.out.println("Random Number is: " + randomNumber);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//div[@id='contentGenreFilter']//div[" + randomNumber + "]//span")).click();
         selenium.hardWait(2);
 
     }
 
     @Step("Select Any One Filter In Article Type")
     public void selectFilterInArticleType() throws InterruptedException {
-        List<WebElement> articleFilterList = driver.findElements(By.xpath("//div[@id='contentCategoryFilter']//div[@class='mb-1 ng-star-inserted']"));
-        int randomNumber = JavaHelpers.getRandomNumberInInteger(articleFilterList.size(), 1);
+        List<WebElement> articleFilterList = driver.findElements(By.xpath("//div[@id='contentCategoryFilter']//app-checkbox//label"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(articleFilterList.size(), 2);
+        selenium.hardWait(5);
         // System.out.println("Random Number is: " + randomNumber);
-        driver.findElement(By.xpath("//div[@id='contentCategoryFilter']//div[@class='mb-1 ng-star-inserted']//span[" + randomNumber + "]")).click();
+        driver.findElement(By.xpath("//div[@id='contentCategoryFilter']//div[" + randomNumber + "]//span")).click();
         selenium.hardWait(2);
-    }
-    @Step("Select Any one  Publish date Range")
-    public void selectFilterInPublicationDate() throws InterruptedException {
-        List<WebElement>publishYearList = driver.findElements(By.xpath("//div[@id='contentSpecializationFilter']//div[@class='form-group']"));
-        int randomNumber = JavaHelpers.getRandomNumberInInteger(publishYearList.size()-1, 1);
-        // System.out.println("Random Number is: " + randomNumber);
-        driver.findElement(By.xpath("//div[@id='contentSpecializationFilter']//div[@class='form-group']/input[" + randomNumber + "]")).click();
-        selenium.hardWait(2);
-        // Custom Range is pending
-    }
-    public void additionalFilter()throws InterruptedException{
-        selenium.click(applyFilterButton);
     }
 
+    @Step("Select Any one  Publish date Range ANd If Select CustomRange So Enter Select Custom Date")
+    public void selectFilterInPublicationDate() throws InterruptedException {
+        List<WebElement> publishYearList = driver.findElements(By.xpath("//div[contains(@class,'radio')]/div"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(publishYearList.size(), 1);
+        System.out.println("Random Number1 is: " + randomNumber);
+        selenium.hardWait(2);
+        selenium.pageScrollInView(By.xpath("//div[contains(@class,'radio')]/div[" + randomNumber + "]//input"));
+
+        String filterText = driver.findElement(By.xpath("//div[contains(@class,'radio')]/div[" + randomNumber + "]//label")).getText();
+        //if select custom range than select any date
+
+        selenium.javascriptClickOn(driver.findElement(By.xpath("//div[contains(@class,'radio')]/div[" + randomNumber + "]//input")));
+        if (filterText.equalsIgnoreCase(" Custom Range")) {
+            driver.findElement(By.xpath("//form/div[1]/div[1]//mat-datepicker-toggle)")).click();
+            selenium.hardWait(3);
+            WebElement startDate = driver.findElement(By.xpath("//td[@class='mat-calendar-body-cell mat-focus-indicator mat-calendar-body-active ng-star-inserted']/preceding-sibling::td']"));
+            startDate.click();
+            driver.findElement(By.xpath("//form/div[1]/div[2]//mat-datepicker-toggle)")).click();
+            WebElement endDate = driver.findElement(By.xpath("//td[@class='mat-calendar-body-cell mat-focus-indicator mat-calendar-body-active ng-star-inserted']"));
+            endDate.click();
+            selenium.click(customDateSubmitButton);
+        }
+    }
+
+    public void selectCustomRangeFilter() throws InterruptedException {
+        driver.findElement(By.xpath("//label[text()=' Custom Range']")).click();
+        selenium.hardWait(3);
+    }
+
+    public void customStartDate(String startDate) {
+        driver.findElement(By.xpath("//input[@name='start_date']")).sendKeys(startDate);
+    }
+
+    public void customEndDate(String endDate) {
+        driver.findElement(By.xpath("//input[@name='end_date']")).sendKeys(endDate);
+    }
+
+    public String numberOfFiltersApply() {
+        String no = driver.findElement(By.xpath("//button[text()='Apply Filter']//span[@class='mat-badge-content mat-badge-active']")).getText();
+        return no;
+    }
+
+    @Step("Select Any Filter in Additional Filter And Apply")
+    public void additionalFilter() throws InterruptedException {
+        selenium.clickOn(additionalFilterButton);
+    }
+
+    public void additionalFilterOfArticleType() throws InterruptedException {
+        List<WebElement> articleType = driver.findElements(By.xpath("//ul[@class='list-unstyled']//div//span"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(articleType.size(), 1);
+        System.out.println("Random Number1 is: " + randomNumber);
+        selenium.hardWait(2);
+
+        driver.findElement(By.xpath("//ul[@class='list-unstyled']//div[" + randomNumber + "]//span")).click();
+    }
+
+    public void additionalFilterOfSpecies() throws InterruptedException {
+        driver.findElement(By.xpath("//div[text()='Species']")).click();
+        selenium.hardWait(3);
+        List<WebElement> species = driver.findElements(By.xpath("//ul[@class='list-unstyled']//div//span"));
+        int number = JavaHelpers.getRandomNumberInInteger(species.size(), 1);
+        selenium.hardWait(1);
+        System.out.println("Random Number1 is: " + number);
+        driver.findElement(By.xpath("//ul[@class='list-unstyled']//div[" + number + "]//span")).click();
+    }
+
+    // Artical type=  //ul[@class='list-unstyled']//div//span
+    public void additionalFilterOfLanguage() throws InterruptedException {
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//div[text()='Language']")).click();
+        List<WebElement> languages = driver.findElements(By.xpath("//ul[@class='list-unstyled']//div//span"));
+        int randomNum = JavaHelpers.getRandomNumberInInteger(languages.size(), 1);
+        System.out.println("Random Number1 is: " + randomNum);
+        selenium.hardWait(2);
+
+        driver.findElement(By.xpath("//ul[@class='list-unstyled']//div[" + randomNum + "]//span")).click();
+    }
+
+    public void additionalFilterOfSex() throws InterruptedException {
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//div[text()='Sex']")).click();
+        selenium.hardWait(3);
+        List<WebElement> s = driver.findElements(By.xpath("//ul[@class='list-unstyled']//div"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(s.size(), 1);
+        System.out.println("Random Number1 is: " + randomNumber);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//ul[@class='list-unstyled']//div[" + randomNumber + "]//span")).click();
+      //   driver.findElement(By.xpath("//input[contains(@id, 'sex')]["+ randomNumber +"]")).click();
+    }
+    public void additionalFilterOfAge() throws InterruptedException {
+        driver.findElement(By.xpath("//div[text()='Age']")).click();
+        selenium.hardWait(2);
+        List<WebElement> age = driver.findElements(By.xpath("//ul[@class='list-unstyled']//div//span"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(age.size(), 1);
+        System.out.println("Random Number1 is: " + randomNumber);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//ul[@class='list-unstyled']//div[" + randomNumber + "]//span")).click();
+    }
+    public void additionalFilterOfOther() throws InterruptedException {
+        driver.findElement(By.xpath("//div[text()='Other']")).click();
+        selenium.hardWait(3);
+        List<WebElement> other = driver.findElements(By.xpath("//ul[@class='list-unstyled']//div//span"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(other.size(), 1);
+        System.out.println("Random Number1 is: " + randomNumber);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//ul[@class='list-unstyled']//div[" + randomNumber + "]//span")).click();
+    }
+    public void applyAdditionalFilters() throws InterruptedException{
+        selenium.clickOn(applyFilterButtonForAdditionFilter);
+    }
 
 }

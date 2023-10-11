@@ -52,7 +52,7 @@ public class LoginPO extends BasePO {
         selenium.click(loginButton);
         selenium.hardWait(10);
     }
-    @Step("Enter InvalidMobileNumber: [0], Invalidpassword [1] and click on Login button")
+    @Step("Enter InvalidMobileNumber: [0], InvalidPassword [1] and click on Login button")
     public void enterInvalidCredentialsAndVerifyValidationMessage(String invalidMobileNumber, String invalidPassword) throws InterruptedException{
         selenium.enterText(mobileNumberTextBox, invalidMobileNumber, true);
         selenium.enterText(passwordTextBox, invalidPassword, true);

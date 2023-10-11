@@ -39,7 +39,7 @@ public class TatvaPediaPO extends BasePO {
     @FindBy(xpath = "//a[@class='text-decoration-none clear-all clear-all-new mr-2']")
     private WebElement clearAllFilterButton;
 
-    @FindBy(xpath = "//*[@class='section-heading']")
+    @FindBy(xpath = "//app-content-genre-section//div[@class='section-heading']")
     private WebElement sectionHeaderText;
 
     @FindBy(xpath = "//span[@class='active-page']")
@@ -115,7 +115,6 @@ public class TatvaPediaPO extends BasePO {
 
     @Step("Speciality")
     public void unselectSpeciality() {
-        // List<WebElement> specialityList= driver.findElements(By.xpath("//*[@id='contentSpecializationFilter']/div[@class='inner-scroll px-3']/div"));
         List<WebElement> checkBoxList = driver.findElements(By.xpath("//*[@id='contentSpecializationFilter']/div[@class='inner-scroll px-3']/div//label/span"));
         for (WebElement checkbox : checkBoxList) {
             if (checkbox.isSelected()) {
@@ -124,6 +123,7 @@ public class TatvaPediaPO extends BasePO {
             }
         }
     }
+
 
 
 

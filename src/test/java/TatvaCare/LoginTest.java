@@ -65,22 +65,22 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(loginPO.ValidationMessageForRequiredFieldMissing(), "A required field is missing. Please fill out all required fields and try again.");
 
     }
-//    @Test(priority = 0, description = "Click On Login Button with only filled mobileNumber field.")
-//    @Severity(SeverityLevel.NORMAL)
-//    @Description("Verify that validations message is displayed when user click on login only fill MobileNumber")
-//    @Story("Empty password filled")
-//    public void clickOnLoginButtonWithoutFillPasswordField()throws InterruptedException{
-//        LoginPO loginPO = new LoginPO(driver);
-//        Login loginData = new LoginData().getOneFilledData();
-//        Reporter.log("Step 1: Navigate to URl");
-//        selenium.navigateToPage(Constants.URL);
-//        Reporter.log("Step 2: Click on the login button");
-//        new LoginFunction(driver,selenium).VerifyValidationMessageForWithoutFillPassword(loginData.getMobileNumber());
-//       // loginPO.loginWithoutFilledRequiredField();
-//        Assert.assertEquals(loginPO.ValidationMessageForPasswordRequired(),"This information is required.");
-//
-//        Assert.assertEquals(loginPO.ValidationMessageForRequiredFieldMissing(),"A required field is missing. Please fill out all required fields and try again.");
-//}
+    @Test(priority = 0, description = "Click On Login Button with only filled mobileNumber field.")
+    @Severity(SeverityLevel.NORMAL)
+    @Description("Verify that validations message is displayed when user click on login only fill MobileNumber")
+    @Story("Empty password filled")
+    public void clickOnLoginButtonWithoutFillPasswordField()throws InterruptedException{
+        LoginPO loginPO = new LoginPO(driver);
+        Login loginData = new LoginData().getOneFilledData();
+        Reporter.log("Step 1: Navigate to URl");
+        selenium.navigateToPage(Constants.URL);
+        Reporter.log("Step 2: Click on the login button");
+        new LoginFunction(driver,selenium).VerifyValidationMessageForWithoutFillPassword(loginData.getMobileNumber());
+       // loginPO.loginWithoutFilledRequiredField();
+        Assert.assertEquals(loginPO.ValidationMessageForPasswordRequired(),"This information is required.");
+
+        Assert.assertEquals(loginPO.ValidationMessageForRequiredFieldMissing(),"A required field is missing. Please fill out all required fields and try again.");
+}
 
 
 }
