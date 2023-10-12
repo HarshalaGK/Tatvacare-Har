@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import pageobjects.base.BasePO;
+import utilities.JavaHelpers;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +50,21 @@ public class HomePO extends BasePO {
 
     @FindBy(xpath = "//span[text()='My List']")
     private WebElement myListPageTitleText;
+
+    @FindBy(xpath = "//button[@title='Tatvacare Walkthrough']")
+    private WebElement walkThrough;
+
+    @FindBy(xpath = "//button[text()='Next']")
+    private WebElement walkThroughNextButton;
+
+    @FindBy(xpath = "//button[text()='Finish']")
+    private WebElement walkThroughFinishButton;
+
+    @FindBy(xpath = "//span[text()=' Skip ']")
+    private WebElement walkThroughSkipButton;
+
+    @FindBy(xpath = "//button[@title='Search Content']")
+    private WebElement searchButton;
 
       public void loginAndClickOnHomeTab() throws InterruptedException {
           selenium.hardWait(3);
@@ -96,6 +112,37 @@ public class HomePO extends BasePO {
         selenium.click(myListBackButton);
         return myListPageTitle;
     }
-
+    public void tatvacareWalkThrough()throws InterruptedException {
+        selenium.clickOn(walkThrough);
+        selenium.clickOn(walkThroughNextButton);
+        selenium.clickOn(walkThroughNextButton);
+        selenium.clickOn(walkThroughFinishButton);
+        selenium.hardWait(2);
+    }
+    public void skipStepsWalkThrough()throws InterruptedException {
+        selenium.clickOn(walkThrough);
+        selenium.clickOn(walkThroughNextButton);
+        selenium.clickOn(walkThroughSkipButton);
+        driver.findElement(By.xpath("//span[text()=' Yes ']")).click();
+    }
+    public void searchWordInHomePage(String text) throws InterruptedException{
+            selenium.clickOn(searchButton);
+            selenium.hardWait(2);
+            WebElement searchBar = driver.findElement(By.xpath("//input[@role='searchbox']"));
+            selenium.enterText(searchBar, text, true);
+            selenium.hardWait(1);
+    }
+    @Step("Select Any Suggestion and  navigate search result page")
+    public void selectRandomSuggestion() throws InterruptedException {
+        selenium.hardWait(3);
+        List<WebElement> suggestionOptionList = driver.findElements(By.xpath("//ul[@role='listbox']/li"));
+        int randomNumber = JavaHelpers.getRandomNumberInInteger(suggestionOptionList.size(), 1);
+        System.out.println("Random Number is: " + randomNumber);
+        driver.findElement(By.xpath("//ul[@role='listbox']/li[" + randomNumber + "]//div")).click();
+        selenium.hardWait(2);
+    }
+    public void clickOnBackButton(){
+          driver.findElement(By.xpath("//span[text()='Back']")).click();
+    }
 
 }

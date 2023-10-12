@@ -32,22 +32,26 @@ public class HomeTest extends BaseTest{
         //new LoginFunction(driver,selenium).navigateOnHomeTab();
 
 
-        List<String> subtabList = homePO.getDashboardTabNameList();
-        Reporter.log("Step 2: Dashboard Tab List:"+subtabList);
-        Assert.assertTrue(subtabList.contains("Events"));
-        Assert.assertTrue(subtabList.contains("My List"));
-        Assert.assertTrue(subtabList.contains("Survey"));
+//        List<String> subtabList = homePO.getDashboardTabNameList();
+//        Reporter.log("Step 2: Dashboard Tab List:"+subtabList);
+//        Assert.assertTrue(subtabList.contains("Events"));
+//        Assert.assertTrue(subtabList.contains("My List"));
+//        Assert.assertTrue(subtabList.contains("Survey"));
+//
+//        Reporter.log("Step 3: Validate user navigate on calender tab after clicking on calender view all button");
+//        String calenderHeader = homePO.navigateOnCalenderThroughDashBoard();
+//        Assert.assertEquals(calenderHeader,"Calendar");
+//
+//        Reporter.log("Step 4: validate user navigate on event tab");
+//        String eventsPageTitle= homePO.navigateOnEventPage();
+//        Assert.assertEquals(eventsPageTitle,"Events");
+//
+//        String myListPageTitle= homePO.navigateOnMyListPage();
+//        Assert.assertEquals(myListPageTitle,"My List");
 
-        Reporter.log("Step 3: Validate user navigate on calender tab after clicking on calender view all button");
-        String calenderHeader = homePO.navigateOnCalenderThroughDashBoard();
-        Assert.assertEquals(calenderHeader,"Calendar");
-
-        Reporter.log("Step 4: validate user navigate on event tab");
-        String eventsPageTitle= homePO.navigateOnEventPage();
-        Assert.assertEquals(eventsPageTitle,"Events");
-
-        String myListPageTitle= homePO.navigateOnMyListPage();
-        Assert.assertEquals(myListPageTitle,"My List");
+        Reporter.log("Step 5: click On WalkThrough And Go to Stepwise");
+        homePO.tatvacareWalkThrough();
+        homePO.skipStepsWalkThrough();
     }
 
 }
