@@ -114,7 +114,11 @@ public class HomePO extends BasePO {
     }
     public void tatvacareWalkThrough()throws InterruptedException {
         selenium.clickOn(walkThrough);
+        selenium.hardWait(1);
         selenium.clickOn(walkThroughNextButton);
+        selenium.hardWait(2);
+        selenium.clickOn(walkThroughNextButton);
+        selenium.hardWait(1);
         selenium.clickOn(walkThroughNextButton);
         selenium.clickOn(walkThroughFinishButton);
         selenium.hardWait(2);
