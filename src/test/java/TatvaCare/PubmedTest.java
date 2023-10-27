@@ -56,7 +56,7 @@ public class PubmedTest extends BaseTest {
         pubmed.shareIconList();
         pubmed.navigateOnTcOrWindowHandle();
 
-        Reporter.log("Step 8: Search Word And Apply Filters");
+        Reporter.log("Step 8: Search Word In Search Box And Apply Filters And Verify The Number Of Filter");
         pubmed.searchBarInPubmed("hand" );
         pubmed.selectRandomSuggestion();
         selenium.hardWait(4);

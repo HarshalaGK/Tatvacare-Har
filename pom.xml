@@ -151,6 +151,7 @@
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
             <version>5.2.0</version>
+
         </dependency>
     </dependencies>
 

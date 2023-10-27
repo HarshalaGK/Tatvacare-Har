@@ -18,33 +18,35 @@ public class ContentManagementTest extends BaseTest {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
-        Reporter.log("Step 1: Create Editorial Research Content");
+        Reporter.log("Step 1: Select Content Management Create Editorial Research Content");
         content.selectContentManagementTab();
         content.clickOnUploadContent();
         content.selectGenreTypeFilter();
         content.selectContinuumFilter();
         content.selectEditorialContentType();
         content.clickOnAddFile();
-        content.contentID("2312143");
-        content.uploadContentFile("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//sample pdf.pdf");
+        content.contentID();
+        content.selectAllCountry();
+        content.editorialsResearchContentUploadPDFFile();
         content.contentTitle("Education Research");
         content.contentDescription("Detail of education research");
         content.readTime();
         content.selectSpeciality();
         content.selectTopic();
-        content.therapyBasedTag(" acb");
-        content.descriptionBasedTag("bbb");
-        content.wordCountOfText("122");
+        content.therapyBasedTag();
+        content.descriptionBasedTag();
+        content.wordCountOfText();
         selenium.hardWait(1);
         content.selectDate();
         content.permission();
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
-        selenium.hardWait(3);
-        String massage = content.successMassage();
+        selenium.hardWait(8);
+        Reporter.log("Step 2: Verify the Editorial Research Content Is Created");
+        String message = content.successMessage();
         selenium.hardWait(2);
-        Assert.assertEquals(massage,"Content file uploaded successfully.");
+        Assert.assertEquals(message, "Content file uploaded successfully.");
     }
 
     @Test(priority = 1, description = "Login In Admin Portal And Create Expert Opinion Content ")
@@ -52,28 +54,30 @@ public class ContentManagementTest extends BaseTest {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
-        Reporter.log("Step 2: Create Expert Opinions Content");
+        Reporter.log("Step 3: Select Expert Opinions Content In Content Type And Create");
         content.selectContentManagementTab();
         content.clickOnUploadContent();
         content.selectGenreTypeFilter();
         content.selectContinuumFilter();
         content.selectExpertOpinionOption();
         content.clickOnAddFile();
-        content.contentID("2312143");
-        content.uploadContentFile("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//sample-mp4-file-small.mp4");
+        content.contentID();
+        content.selectAllCountry();
+        content.expertOpinionVideoUploadPDFFile();
         content.contentTitle("Expert Opinions content");
         content.contentDescription("Detail of Expert Opinions");
         content.readTime();
         content.selectSpeciality();
         content.selectTopic();
-        content.therapyBasedTag("expertTag");
-        content.descriptionBasedTag("opinionTag");
+        content.therapyBasedTag();
+        content.descriptionBasedTag();
         selenium.hardWait(1);
         content.selectDate();
         content.permission();
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
+        Reporter.log("Step 4: Verify the  Expert Opinions Content Is Created ");
         selenium.hardWait(3);
     }
 
@@ -83,28 +87,30 @@ public class ContentManagementTest extends BaseTest {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
-        Reporter.log("Step 3: Create Infographics Content");
+        Reporter.log("Step 5: Select Infographics Content In Content Type And Create");
         content.selectContentManagementTab();
         content.clickOnUploadContent();
         content.selectGenreTypeFilter();
         content.selectContinuumFilter();
         content.selectInfographicsOption();
         content.clickOnAddFile();
-        content.contentID("2312143");
-        content.uploadContentFile("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//sample pdf.pdf");
+        content.contentID();
+        content.selectAllCountry();
+        content.InfographicsContentUploadFile();
         content.contentTitle("Infographics content");
         content.contentDescription("Detail of Infographics");
         content.readTime();
         content.selectSpeciality();
         content.selectTopic();
-        content.therapyBasedTag("InfographicsTag");
-        content.descriptionBasedTag("opinionTag");
+        content.therapyBasedTag();
+        content.descriptionBasedTag();
         selenium.hardWait(1);
         content.selectDate();
         content.permission();
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
+        Reporter.log("Step 6: Verify Infographics Content Created");
         selenium.hardWait(3);
     }
 
@@ -113,27 +119,29 @@ public class ContentManagementTest extends BaseTest {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
-        Reporter.log("Step 4: Create Medical Slide Library Content");
+        Reporter.log("Step 7: Select Medical Slide Library Content In Content Type And Create");
         content.selectContentManagementTab();
         content.clickOnUploadContent();
         content.selectGenreTypeFilter();
         content.selectContinuumFilter();
         content.selectMedicalSlideLibraryOption();
         content.clickOnAddFile();
-        content.contentID("2312143");
-        content.uploadContentFile("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//Dickinson_Sample_Slides.pptx");
+        content.contentID();
+        content.selectAllCountry();
+        content.MedicalSlideLibraryPPTxFile();
         content.contentTitle("Title - Medical Slide Library ");
         content.contentDescription("Detail of Medical Slide Library");
         content.selectSpeciality();
         content.selectTopic();
-        content.therapyBasedTag("MedicalTag");
-        content.descriptionBasedTag("LibraryTag");
+        content.therapyBasedTag();
+        content.descriptionBasedTag();
         selenium.hardWait(1);
         content.selectDate();
         content.permission();
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
+        Reporter.log("Step 8: Verify The Medical Slide Library Content Is Created");
         selenium.hardWait(3);
     }
 
@@ -143,22 +151,23 @@ public class ContentManagementTest extends BaseTest {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
-        Reporter.log("Step 5: Create Podcasts Content");
+        Reporter.log("Step 9: Select Podcasts Content In Content Type And Created");
         content.selectContentManagementTab();
         content.clickOnUploadContent();
         content.selectGenreTypeFilter();
         content.selectContinuumFilter();
         content.selectPodcasts();
         content.clickOnAddFile();
-        content.contentID("2312143");
-        content.uploadContentFile("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//file_example_MP3_1MG.mp3");
+        content.contentID();
+        content.selectAllCountry();
+        content.PodcastUploadMP3File();
         content.contentTitle("Title - PodcastsTag");
         content.contentDescription("Detail of PodcastsTag");
         content.readTime();
         content.selectSpeciality();
         content.selectTopic();
-        content.therapyBasedTag("PodcastsTag");
-        content.descriptionBasedTag("PodcastsDescriptionTag");
+        content.therapyBasedTag();
+        content.descriptionBasedTag();
         selenium.hardWait(1);
         content.selectDate();
         content.transcriptInPodcast();
@@ -166,6 +175,7 @@ public class ContentManagementTest extends BaseTest {
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
+        Reporter.log("Step 10: Verify The  Podcasts Content Is Created");
         selenium.hardWait(3);
     }
 
@@ -174,22 +184,23 @@ public class ContentManagementTest extends BaseTest {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
-        Reporter.log("Step 5: Create Webinars & Panel Discussions Content");
+        Reporter.log("Step 11: Select Webinars & Panel Discussions Content In Content type And Created");
         content.selectContentManagementTab();
         content.clickOnUploadContent();
         content.selectGenreTypeFilter();
         content.selectContinuumFilter();
         content.selectPodcasts();
         content.clickOnAddFile();
-        content.contentID("23121893");
-        content.uploadContentFile("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//sample-15s.mp4");
+        content.contentID();
+        content.selectAllCountry();
+        content.WebinarsAndPanelDiscussionsUploadMP4File();
         content.contentTitle("Title - Webinars & Panel Discussions");
         content.contentDescription("Detail Webinars & Panel Discussions");
         content.readTime();
         content.selectSpeciality();
         content.selectTopic();
-        content.therapyBasedTag(" WPDTag");
-        content.descriptionBasedTag("Webinar Tag");
+        content.therapyBasedTag();
+        content.descriptionBasedTag();
         selenium.hardWait(1);
         content.selectDate();
         content.externalLink("www.google.com");
@@ -197,8 +208,23 @@ public class ContentManagementTest extends BaseTest {
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
+        Reporter.log("Step 12: Verify Webinars & Panel Discussions Content Is Created");
         selenium.hardWait(3);
+    }
+
+    @Test(priority = 4, description = "Login In Admin Portal and Navigate on Contain management ")
+    public void editContent() throws InterruptedException {
+        AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
+        ContentManagementPO content = new ContentManagementPO(driver);
+        new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
+        Reporter.log("Step 7: Select Any Content In Content Management");
+        content.selectContentManagementTab();
+        content.editConetent();
+        content.saveContent();
+        Reporter.log("Step 7: Verify The Contend Updated Successfully");
+        String text = content.successEditMessage();
+        Assert.assertEquals(text,"Content File uploaded successfully.");
+
 
     }
 }
-

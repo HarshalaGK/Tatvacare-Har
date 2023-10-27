@@ -28,6 +28,7 @@ public class HomeTest extends BaseTest{
         selenium.navigateToPage(Constants.URL);
         new LoginFunction(driver, selenium).loginIntoApplicationByUser(loginData.getMobileNumber(), loginData.getPassword());
         Reporter.log("Step 1: Click On HomeTab");
+
         homePO.loginAndClickOnHomeTab();
         //new LoginFunction(driver,selenium).navigateOnHomeTab();
 

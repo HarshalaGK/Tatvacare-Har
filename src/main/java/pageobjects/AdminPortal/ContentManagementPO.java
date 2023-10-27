@@ -1,5 +1,6 @@
 package pageobjects.AdminPortal;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -69,6 +70,18 @@ public class ContentManagementPO extends BasePO {
 
     @FindBy(xpath = "//p-checkbox[@inputid='notApplicable']")
     private WebElement notApplicableCheckBox;
+     @FindBy(xpath = "//label[text()=' Upload Content File ']//following-sibling::div/input")
+     private WebElement uploadFileBox;
+     @FindBy(xpath ="//input[@placeholder='Enter Content ID']")
+     private WebElement contentIdTextBox;
+
+    @FindBy(xpath = "//div[contains(text(),'Select Country')]")
+    private WebElement selectCountyDropDown;
+    @FindBy(xpath = "//div[contains(@class, 'p-multiselect-header ng-tns')]//div[1]")
+    private WebElement allSelectCountryCheckBox;
+
+    @FindBy(xpath = "//p-button[@label='Edit']/button")
+    private WebElement editButton;
 
 
         public void selectContentManagementTab()throws InterruptedException{
@@ -77,15 +90,16 @@ public class ContentManagementPO extends BasePO {
            public void clickOnUploadContent()throws InterruptedException{
             selenium.clickOn(createContentButton);
            }
-        public void selectGenreTypeFilter() throws InterruptedException{
+    @Step("Click on Genre type filter and select any random")
+   public void selectGenreTypeFilter() throws InterruptedException{
                selenium.clickOn(selectGenreBox);
                 List<WebElement> filterOption = driver.findElements(By.xpath("//ul[@role='listbox']/p-multiselectitem"));
-                selenium.hardWait(1);
+                selenium.hardWait(2);
                 String randomNumber = (javahelpers.getRandomNumber(filterOption.size(), 2));
                 driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber +"]//li/div")).click();
-                selenium.hardWait(1);
+                selenium.hardWait(2);
         }
-
+    @Step("Click on Continuum type filter and select any one randomly")
     public void selectContinuumFilter() throws InterruptedException{
         selenium.clickOn(selectContinuumBox);
         List<WebElement> filterOption = driver.findElements(By.xpath("//ul[@role='listbox']/p-multiselectitem"));
@@ -94,6 +108,7 @@ public class ContentManagementPO extends BasePO {
         driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber + "]/li/div")).click();
         selenium.hardWait(1);
     }
+    @Step("Click on Content type filter and select Editorial Content Type")
     public void selectEditorialContentType()throws InterruptedException{
             selenium.clickOn(selectContentTypeBox);
             selenium.hardWait(1);
@@ -102,16 +117,47 @@ public class ContentManagementPO extends BasePO {
     public void clickOnAddFile()throws InterruptedException{
             selenium.clickOn(addFileButton);
     }
-    public void contentID(String id){
-            WebElement idBox = driver.findElement(By.xpath("//input[@placeholder='Enter Content ID']"));
-              idBox.sendKeys(id);
-    }
-    public void uploadContentFile(String path)throws InterruptedException{
-       WebElement file = driver.findElement(By.xpath("//label[text()=' Upload Content File ']//following-sibling::div/input"));
+//    public void contentID(String id){
+//            WebElement idBox = driver.findElement(By.xpath("//input[@placeholder='Enter Content ID']"));
+//              idBox.sendKeys(id);
+//    }
+    public void contentID() {
+        selenium.enterText(contentIdTextBox, javahelpers.getContentId(7), true);
 
-             file.sendKeys(path);
-             selenium.hardWait(1);
-        }
+    }
+//    public void uploadContentFile(String path)throws InterruptedException{
+//            WebElement file = driver.findElement(By.xpath("//label[text()=' Upload Content File ']//following-sibling::div/input"));
+//            file.sendKeys(path);
+//             selenium.hardWait(1);
+//        }
+    public void editorialsResearchContentUploadPDFFile()throws InterruptedException {
+      uploadFileBox.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//sample pdf.pdf");
+      selenium.hardWait(1);
+    }
+    public void expertOpinionVideoUploadPDFFile()throws InterruptedException {
+        uploadFileBox.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//sample-mp4-file-small.mp4");
+        selenium.hardWait(1);
+    }
+
+    public void InfographicsContentUploadFile()throws InterruptedException {
+            selenium.hardWait(5);
+        uploadFileBox.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//sample pdf.pdf");
+        selenium.hardWait(3);
+    }
+
+    public void MedicalSlideLibraryPPTxFile()throws InterruptedException {
+        uploadFileBox.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//Dickinson_Sample_Slides.pptx");
+        selenium.hardWait(1);
+    }
+
+    public void PodcastUploadMP3File()throws InterruptedException {
+        uploadFileBox.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//file_example_MP3_1MG.mp3");
+        selenium.hardWait(1);
+    }
+    public void WebinarsAndPanelDiscussionsUploadMP4File()throws InterruptedException {
+        uploadFileBox.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//sample-15s.mp4");
+        selenium.hardWait(1);}
+
         public void readTime()throws InterruptedException{
             selenium.clickOn(timeFieldBox);
             driver.findElement(By.xpath("//div[contains(@class,'p-timepicker ng-tns')]//following-sibling::div[2]//button/span[1]")).click();
@@ -124,25 +170,26 @@ public class ContentManagementPO extends BasePO {
             contentDescription.sendKeys(description);
        }
        public void selectSpeciality()throws InterruptedException{
+            selenium.hardWait(3);
             selenium.clickOn(specialityTextBox);
                List<WebElement> filterOption = driver.findElements(By.xpath("//ul[@role='listbox']/p-multiselectitem"));
                String randomNumber = (javahelpers.getRandomNumber(filterOption.size(), 1));
-               selenium.hardWait(1);
+               selenium.hardWait(2);
                driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber + "]/li/div")).click();
-               selenium.hardWait(1);
+               selenium.hardWait(2);
            }
            public void selectTopic()throws InterruptedException{
             selenium.clickOn(topicTextBox);
             driver.findElement(By.xpath("//div[contains(@class, 'p-multiselect-header')]/div")).click();
        }
-       public void therapyBasedTag(String tag){
-            therapyBasedTabBox.sendKeys(tag);
+       public void therapyBasedTag(){
+            therapyBasedTabBox.sendKeys("TherapyTag");
        }
-       public void descriptionBasedTag(String Tag){
-            descriptionBasedTagBox.sendKeys(Tag);
+       public void descriptionBasedTag(){
+            descriptionBasedTagBox.sendKeys("DTag");
        }
-       public void wordCountOfText(String wordCount){
-            wordCountBox.sendKeys(wordCount);
+       public void wordCountOfText(){
+            wordCountBox.sendKeys("122");
        }
        public void selectDate()throws InterruptedException{
             driver.findElement(By.xpath("//p-calendar[@formcontrolname='date']//button")).click();
@@ -151,6 +198,7 @@ public class ContentManagementPO extends BasePO {
        }
        public void permission(){
             driver.findElement(By.xpath("//p-checkbox[@value='isDownload']")).click();
+            driver.findElement(By.xpath("//p-checkbox[@inputid='externalSharing']")).click();
        }
 
        public void schedulePublish()throws InterruptedException{
@@ -199,11 +247,28 @@ public class ContentManagementPO extends BasePO {
     public void externalLink(String link){
         driver.findElement(By.xpath("//input[@formcontrolname='externalLinkout']")).sendKeys(link);
     }
-    public String successMassage(){
-      String text= driver.findElement(By.xpath("//div[text()='Content file uploaded successfully.']")).getText();
+    public String successMessage(){
+      String text= driver.findElement(By.xpath("//p-toastitem//div[text()='Content file uploaded successfully.']")).getText();
    return text;
     }
-
+    public void selectAllCountry() throws InterruptedException {
+        selenium.clickOn(selectCountyDropDown);
+        selenium.hardWait(2);
+        selenium.clickOn(allSelectCountryCheckBox);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//button[contains(@class, 'p-multiselect-close p-link ng-tns')]")).click();
+    }
+     @Step("select any content for edit")
+    public void  editConetent()throws InterruptedException{
+            driver.findElement(By.xpath("//tbody[@class='p-datatable-tbody']//td[2]")).click();
+            selenium.hardWait(3);
+            selenium.clickOn(editButton);
+            driver.findElement(By.xpath("//input[@formcontrolname='moleculeBasedTags']")).sendKeys("tag");
+     }
+     public String successEditMessage(){
+        String text=  driver.findElement(By.xpath("//div[text()='Content File uploaded successfully.']")).getText();
+        return text;
+     }
 
 
 

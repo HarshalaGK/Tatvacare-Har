@@ -1,5 +1,6 @@
 package pageobjects.AdminPortal;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -51,6 +52,12 @@ public class NewsManagementPO extends BasePO {
     private WebElement trendingStartDate;
     @FindBy(xpath = "//td[contains(@class,'datepicker-today')]/following-sibling::td[1]")
     private WebElement trendingEndDate;
+
+    @FindBy(xpath = "//div[contains(text(),'Select Country')]")
+    private WebElement selectCountyDropDown;
+
+    @FindBy(xpath = "//div[contains(@class, 'p-multiselect-header ng-tns')]//div[1]")
+    private WebElement allSelectCountryCheckBox;
 
     public void newsManagementTAb() throws InterruptedException {
         selenium.clickOn(newsManagementTab);
@@ -109,8 +116,9 @@ public class NewsManagementPO extends BasePO {
         driver.findElement(By.xpath("//input[@id='title']")).sendKeys(title);
     }
 
-    public void newsDescription(String description) throws InterruptedException {
-        driver.findElement(By.xpath("//div[@class='ql-editor ql-blank']")).sendKeys(description);
+    public void newsDescription() throws InterruptedException {
+      WebElement des=  driver.findElement(By.xpath("//div[@class='ql-editor ql-blank']"));
+      des.sendKeys("news description");
     }
 
     public void selectTag() throws InterruptedException {
@@ -125,12 +133,11 @@ public class NewsManagementPO extends BasePO {
 
     }
 
-    public void linkedUrlLink(String link) throws InterruptedException {
+    public void linkedUrlLink() throws InterruptedException {
         selenium.hardWait(2);
-//        driver.findElement(By.xpath("//input[@id='readMoreUrl']")).sendKeys(link);
          WebElement e=  driver.findElement(By.xpath("//input[@id='readMoreUrl']"));
          selenium.clickOn(e);
-         e.sendKeys(link);
+         e.sendKeys("https://indianexpress.com/section/education/");
          selenium.hardWait(2);
 
     }
@@ -138,24 +145,33 @@ public class NewsManagementPO extends BasePO {
     public void labelName(String label) throws InterruptedException {
         driver.findElement(By.xpath("//input[@id='readMoreLable']")).sendKeys(label);
     }
-
-    public void uploadImage(String path) throws InterruptedException {
-        WebElement image = driver.findElement(By.xpath("//label[text()='Image *']//following-sibling::div/input"));
-        image.sendKeys(path);
+    @Step(" given the image path for upload image")
+    public void uploadImage()throws InterruptedException {
+        selenium.hardWait(5);
+        WebElement imag = driver.findElement(By.xpath("//label[text()='Image *']//following-sibling::div/input"));
+        imag.sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//mZWTSqsHwPqLJ4WCez9mSm.jpg");
     }
-
-    public void uploadVideo(String path, String thumb) throws InterruptedException {
+    @Step(" given the video and image path for upload ")
+    public void uploadVideo() throws InterruptedException {
         WebElement video = driver.findElement(By.xpath("//label[text()='Video *']//following-sibling::div/input"));
-        video.sendKeys(path);
+        video.sendKeys("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//sample-15s.mp4");
         selenium.hardWait(2);
         WebElement thumbNail = driver.findElement(By.xpath("//label[text()='Thumbnail For Video - jpeg / jpg / png *']//following-sibling::div/input"));
-        thumbNail.sendKeys(thumb);
+        thumbNail.sendKeys("C://Users//Administrator//Desktop//Tatvacare-Har//src//main//resources//Images//mZWTSqsHwPqLJ4WCez9mSm.jpg");
         selenium.hardWait(1);
     }
 
     public void saveNews() throws InterruptedException {
         driver.findElement(By.xpath("//span[text()='Save']")).click();
         selenium.hardWait(5);
+    }
+    @Step("click on country dropdown and select all country")
+    public void selectAllCountry() throws InterruptedException {
+        selenium.clickOn(selectCountyDropDown);
+        selenium.hardWait(2);
+        selenium.clickOn(allSelectCountryCheckBox);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//button[contains(@class, 'p-multiselect-close p-link ng-tns')]")).click();
     }
 
     public void sendNotification() {
@@ -173,13 +189,42 @@ public class NewsManagementPO extends BasePO {
         selenium.clickOn(trendingEndDateBox);
         selenium.clickOn(trendingEndDate);
     }
-    public void deleteNews(){
+    public void deleteNews()throws InterruptedException{
         driver.findElement(By.xpath("//a//img[@alt='Delete'][1]")).click();
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//p-button[@label='Yes']")).click();
+        selenium.hardWait(2);
+    }
+    public String deleteSuccessMessage(){
+       String text= driver.findElement(By.xpath("//p-toastitem//div[text()='News deleted successfully']")).getText();
+       return text;
     }
     public void editNews(){
         driver.findElement(By.xpath("//a//img[@alt='Edit'][1]")).click();
+        WebElement edit =  driver.findElement(By.xpath("//div[@class='ql-editor']"));
+      selenium.enterText(edit,"edit news description", true);
+    }
+    public String editSuccessMessage(){
+        String text= driver.findElement(By.xpath("//p-toastitem//div[text()='News uploaded successfully']")).getText();
+        return text;
 
     }
+    public void selectCountyAsIndia() throws InterruptedException {
+        selenium.clickOn(selectCountyDropDown);
+        selenium.hardWait(5);
+        driver.findElement(By.xpath("//li[@aria-label='India']/div")).click();
+    }
+    @Step("Select Today Date And Submit Get News Text For Verify")
+    public String newsVerify() throws InterruptedException {
+        driver.findElement(By.xpath("//input[@placeholder='From']")).click();
+        driver.findElement(By.xpath("//td[contains(@class, 'p-datepicker-today ng-star-inserted')]")).click();
+        selenium.hardWait(5);
+        driver.findElement(By.xpath("//p-button[@label='Submit']")).click();
+        selenium.hardWait(5);
+        String newsText = driver.findElement(By.xpath("//tbody[@class='p-datatable-tbody']//tr//td[3]")).getText();
+        return newsText;
+    }
+
 }
 
 

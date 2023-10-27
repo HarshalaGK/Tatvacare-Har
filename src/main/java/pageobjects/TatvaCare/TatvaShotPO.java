@@ -18,7 +18,7 @@ public class TatvaShotPO extends BasePO {
     }
     JavaHelpers java = new JavaHelpers();
 
-   @FindBy(xpath = "//li[@title='TatvaShots']")
+   @FindBy(xpath = "//li[@text='Consume Recent Medical Advances in a Flash!']")
     private WebElement tatvaShotsTab;
 
     @FindBy(xpath = "//input[@role='searchbox']")
@@ -35,13 +35,16 @@ public class TatvaShotPO extends BasePO {
     @FindBy(xpath = "//button[text()='Cancel']")
     private WebElement cancelFeedButton;
 
-    @FindBy(xpath = "//button[normalize-space()='All News']")
+    @FindBy(xpath = "//button[contains(text(),'All News')]")
     private WebElement allNewsButton;
 
     @FindBy(xpath = "//*[text()='Trending ']")
     private WebElement trendingTabButton;
 
-    @FindBy(xpath = "//div[@class='swiper-slide bg_swiper ng-star-inserted swiper-slide-active']//a[3]")
+    @FindBy(xpath = "//button[normalize-space()='Bookmarked']")
+    private WebElement bookMarkTabButton;
+
+    @FindBy(xpath = "//div[@class='swiper-slide bg_swiper ng-star-inserted swiper-slide-active']//div[@class='d-flex align-items-center']//a[3]")
     private WebElement bookmarkIconButton;
     public void windowHandle() throws InterruptedException {
         selenium.getWindowHandles();
@@ -54,6 +57,7 @@ public class TatvaShotPO extends BasePO {
     }
     public void searchInBox(String str)throws InterruptedException{
         selenium.enterText(searchBox,str,true);
+        selenium.hardWait(2);
         searchBox.sendKeys(Keys.ENTER);
         return;
     }
@@ -92,6 +96,7 @@ public class TatvaShotPO extends BasePO {
         selenium.click(allNewsButton);
     }
     public void addBookmarkOnNews() throws InterruptedException {
+       //String text = driver.findElement(By.xpath("//h3[@class='font_22 ellipse_2_line force-select'][1]")).getText();
         selenium.click(bookmarkIconButton);
     }
    public void likeOnAnyNews(){
@@ -100,7 +105,15 @@ public class TatvaShotPO extends BasePO {
        driver.findElement(By.xpath("//div[@class='d-flex align-items-center']//a[1]['+ randomNumber +']")).click();
     }
     public void navigateOnTrending() throws InterruptedException {
-        selenium.click(tatvaShotsTab);
-
+        selenium.click(trendingTabButton);
     }
+    public void navigateOnBookMarkTab()throws InterruptedException{
+        selenium.clickOn(bookMarkTabButton);
+    }
+    public String newsHeadingText(){
+        List<WebElement> newsText = driver.findElements(By.xpath("//h3[@class='font_22 ellipse_2_line force-select']"));
+        String newsName = newsText.get(1).getText();
+        return newsName;
+    }
+
     }

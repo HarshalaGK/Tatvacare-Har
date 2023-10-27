@@ -67,11 +67,11 @@ public class HomePO extends BasePO {
     private WebElement searchButton;
 
       public void loginAndClickOnHomeTab() throws InterruptedException {
-          selenium.hardWait(3);
-          selenium.click(homeTab);
           selenium.hardWait(10);
           selenium.getWindowHandles();
           selenium.switchToWindow(1);
+          selenium.hardWait(3);
+          selenium.click(homeTab);
           selenium.hardWait(10);
 
       }

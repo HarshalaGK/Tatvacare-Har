@@ -15,7 +15,7 @@ public class Event_ManagementPO extends BasePO {
         super(driver);
     }
 
-    JavaHelpers java = new JavaHelpers();
+    JavaHelpers javaHelper = new JavaHelpers();
     @FindBy(xpath = "//span[text()=' Event Management']")
     private WebElement eventManageTab;
 
@@ -25,15 +25,13 @@ public class Event_ManagementPO extends BasePO {
     @FindBy(xpath = "//input[@placeholder='Enter Content ID']")
     private WebElement contentIdTextBox;
 
-    @FindBy(xpath = "//div[@class='p-multiselect-label ng-tns-c153-86 p-placeholder']")
+    @FindBy(xpath = "//div[contains(text(),'Select Country')]")
     private WebElement selectCountyDropDown;
 
-    @FindBy(xpath = "//div[@class='p-checkbox-box ng-tns-c153-86']")
+    @FindBy(xpath = "//div[contains(@class, 'p-multiselect-header ng-tns')]//div[1]")
     private WebElement allSelectCountryCheckBox;
     @FindBy(xpath = "//input[@id='eventTitle']")
     private WebElement eventTitleBox;
-    @FindBy(xpath = "//span[@class='ng-tns-c158-87 p-dropdown-label p-inputtext ng-star-inserted']")
-    private WebElement selectEventTypeDropDown;
 
     @FindBy(xpath = "//label[@for='event-internal-radio']//span[@class='radio-icon']")
     private WebElement radioButtonOfInternalEvent;
@@ -44,7 +42,7 @@ public class Event_ManagementPO extends BasePO {
     @FindBy(xpath = "//p-calendar[@formcontrolname='eventStartDate']//button")
     private WebElement startDateBox;
 
-    @FindBy(xpath = "//td[@class='ng-tns-c156-20 p-datepicker-today ng-star-inserted']")
+    @FindBy(xpath = "//td[contains(@class, 'p-datepicker-today ng-star-inserted')]")
     private WebElement currentDate;
 
     @FindBy(xpath = "//p-calendar[@formcontrolname='eventEndDate']//button")
@@ -59,6 +57,9 @@ public class Event_ManagementPO extends BasePO {
     @FindBy(xpath = "//button[text()=' Publish Event ']")
     private WebElement publishEventButton;
 
+    @FindBy(xpath = "//textarea[@id='eventDescription']")
+    private WebElement eventDescriptionBox;
+
     public void eventManageTab() throws InterruptedException {
         selenium.clickOn(eventManageTab);
     }
@@ -67,20 +68,23 @@ public class Event_ManagementPO extends BasePO {
         selenium.click(createEventButton);
     }
 
-    public void contentId(String id) {
-        selenium.enterText(contentIdTextBox, id, true);
+    public void contentId() {
+        selenium.enterText(contentIdTextBox, javaHelper.getContentId(7), true);
+
     }
 
-    public void clickOnSelectCountryDropdown() throws InterruptedException {
+    public void selectAllCountry() throws InterruptedException {
         selenium.clickOn(selectCountyDropDown);
-    }
-
-    public void selectAllCountryOptionCheckBox() throws InterruptedException {
+        selenium.hardWait(2);
         selenium.clickOn(allSelectCountryCheckBox);
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//button[contains(@class, 'p-multiselect-close p-link ng-tns')]")).click();
     }
 
-    public void selectIndia() throws InterruptedException {
-        //  List<WebElement> countryList = driver.findElements(By.xpath("//ul[@role='listbox']//li/div"));
+
+    public void selectCountyAsIndia() throws InterruptedException {
+        selenium.clickOn(selectCountyDropDown);
+        selenium.hardWait(5);
         driver.findElement(By.xpath("//li[@aria-label='India']/div")).click();
     }
 
@@ -88,16 +92,17 @@ public class Event_ManagementPO extends BasePO {
         eventTitleBox.sendKeys(title);
     }
 
+
     public void selectEventType() throws InterruptedException {
         driver.findElement(By.xpath("//span[contains(text(),'Select Type')]")).click();
-        selenium.hardWait(2);
-       // driver.findElement(By.cssSelector("ul[role='listbox'] > p-dropdownitem:nth-child(3) span")).click();
+        selenium.hardWait(3);
+        // driver.findElement(By.cssSelector("ul[role='listbox'] > p-dropdownitem:nth-child(3) span")).click();
         List<WebElement> eventLs = driver.findElements(By.cssSelector("ul[role='listbox'] > p-dropdownitem"));
+        selenium.hardWait(3);
+        int randomNumber = (JavaHelpers.getRandomNumberInInteger(eventLs.size(), 3));
         selenium.hardWait(2);
-        //String randomNumber = (java.getRandomNumber(eventLs.size(), 2));
-        int randomNumber= (java.getRandomNumberInInteger(eventLs.size(), 2));
-        selenium.hardWait(2);
-        driver.findElement(By.cssSelector("ul[role='listbox'] > p-dropdownitem:nth-child('" + randomNumber + "') span")).click();
+        WebElement g = driver.findElement(By.cssSelector("ul[role='listbox'] > p-dropdownitem:nth-child(" + randomNumber + ") span"));
+        selenium.clickOn(g);
         selenium.hardWait(2);
 
     }
@@ -106,9 +111,15 @@ public class Event_ManagementPO extends BasePO {
         selenium.clickOn(radioButtonOfExternalEvent);
     }
 
+    public void internalEventDescription() {
+        eventDescriptionBox.sendKeys("this is Internal Event  " + javaHelper.getRandomString(5));
+    }
+
     public void selectStartDateAndEndDate() throws InterruptedException {
         selenium.clickOn(startDateBox);
+        selenium.hardWait(1);
         selenium.clickOn(currentDate);
+        selenium.hardWait(2);
         selenium.clickOn(endDateBox);
         selenium.clickOn(endDate);
     }
@@ -118,17 +129,17 @@ public class Event_ManagementPO extends BasePO {
         driver.findElement(By.xpath("//div[text()='Select Speciality']")).click();
         List<WebElement> specialityList = driver.findElements(By.xpath("//ul[@role='listbox']/p-multiselectitem"));
         selenium.hardWait(2);
-        String randomNumber = (java.getRandomNumber(specialityList.size(), 1));
+        String randomNumber = (javaHelper.getRandomNumber(specialityList.size(), 2));
         String specialityTitle = driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber + "]//li/span")).getText();
         selenium.hardWait(2);
         driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber + "]//li/span")).click();
-         return specialityTitle;
+        return specialityTitle;
     }
 
     public void fullDayEventCheck() {
         String value = driver.findElement(By.xpath("//p-inputswitch[@formcontrolname='isFullDay']//input")).getAttribute("aria-checked");
         if (value == "false") {
-            driver.findElement(By.xpath("//p-inputswitch[@formcontrolname='isFullDay']/div//input")).click();
+            driver.findElement(By.xpath("//p-inputswitch[@formcontrolname='isFullDay']/div/input")).click();
         }
 
     }
@@ -140,7 +151,8 @@ public class Event_ManagementPO extends BasePO {
         driver.findElement(By.xpath("//span[contains(text(),'Kolkata, West Bengal')]")).click();
 
     }
-    public void SelectInternalEvent()throws InterruptedException{
+
+    public void selectInternalEvent() throws InterruptedException {
         selenium.clickOn(radioButtonOfInternalEvent);
         driver.findElement(By.xpath("//textarea[@id='eventDescription']")).sendKeys("event");
     }
@@ -153,6 +165,16 @@ public class Event_ManagementPO extends BasePO {
 
     public void publishEvent() throws InterruptedException {
         selenium.clickOn(publishEventButton);
+    }
+
+    public String eventVerify() throws InterruptedException {
+        driver.findElement(By.xpath("//input[@placeholder='From']")).click();
+        driver.findElement(By.xpath("//td[contains(@class, 'p-datepicker-today ng-star-inserted')]")).click();
+        selenium.hardWait(5);
+        driver.findElement(By.xpath("//p-button[@label='Submit']")).click();
+        selenium.hardWait(5);
+        String eventText = driver.findElement(By.xpath("//tbody[@class='p-datatable-tbody']//tr//td[2]")).getText();
+        return eventText;
     }
 
 }

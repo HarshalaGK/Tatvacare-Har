@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 import pageobjects.base.BasePO;
 import utilities.JavaHelpers;
 
@@ -24,7 +25,7 @@ public class TatvaPediaPO extends BasePO {
     @FindBy(xpath = "//a[@class='text-decoration-none clear-all']")
     private WebElement genreSelectFilterButton;
 
-    @FindBy(xpath = "//a[@class='text-decoration-none clear-all'][2]")
+    @FindBy(xpath = "//div[@id='contentcontinuumFilter']/div/div/a")
     private WebElement continuumSelectFilterButton;
 
     @FindBy(xpath = "//div[@id='contentGenreFilter']//label[@class='checkbox-container ng-star-inserted']")
@@ -45,7 +46,14 @@ public class TatvaPediaPO extends BasePO {
     @FindBy(xpath = "//span[@class='active-page']")
     private WebElement contentPageTitleText;
 
+    @FindBy(xpath = "//a[@class='text-decoration-none old-page']")
+    private WebElement contentType;
 
+    @FindBy(xpath = "//span[text()='Tatwacare Share']")
+    private WebElement tatvacareShareIcon;
+
+    @FindBy(xpath = "//span[text()='WhatsApp Share']")
+    private WebElement whatsAppShareIcon;
     @FindBy(xpath = "//span[text()='Back']")
     private WebElement backButton;
 
@@ -58,6 +66,11 @@ public class TatvaPediaPO extends BasePO {
     @FindBy(xpath = "//button[@class='btn btn-outline-primary btn-sm px-3 blue-btn']")
     private WebElement shareButton;
 
+    @FindBy(xpath = "//li[@id='navItemSocialConnect' and @title='Social']")
+    private WebElement socialTabButton;
+
+    @FindBy(xpath = "//span[text()='Start Webinar']")
+    private WebElement startWebinarButton;
 
     public void navigateOnTatvapedia() {
         selenium.getWindowHandles();
@@ -79,7 +92,8 @@ public class TatvaPediaPO extends BasePO {
         driver.findElement(By.xpath("//ul[@class='ng-star-inserted']['" + randomNumber + "']//li/a")).click();
         //ul[@class='ng-star-inserted']//li/a
     }
-    public String searchResultPageTitle(){
+
+    public String searchResultPageTitle() {
         String searchResultText;
         searchResultText = driver.findElement(By.xpath("//div[@class='section-heading typography-18']")).getText();
         return searchResultText;
@@ -125,8 +139,6 @@ public class TatvaPediaPO extends BasePO {
     }
 
 
-
-
     @Step("Select Any filter of Genre ")
     public String selectRandomFilterOfGenre() throws NumberFormatException {
         List<WebElement> filterList = driver.findElements(By.xpath("//*[@id='contentGenreFilter']/div"));
@@ -138,7 +150,7 @@ public class TatvaPediaPO extends BasePO {
     }
 
     public void clickOnApplyFilterButton() throws InterruptedException {
-        selenium.clickOn(applyFilterButton);
+        selenium.javascriptClickOn(applyFilterButton);
     }
 
     public String getSectionHeaderText() {
@@ -160,25 +172,23 @@ public class TatvaPediaPO extends BasePO {
         return selenium.getText(contentPageTitleText);
     }
 
-    public void shareButton() throws InterruptedException{
+    public void shareButton() throws InterruptedException {
         selenium.click(shareButton);
     }
-    public void shareTheContentInOptionsList()throws InterruptedException{
-        List<WebElement> socialMediaOptions=driver.findElements(By.xpath("//li[@class='ng-tns-c269-35 p-menuitem ng-star-inserted']"));
-       // String randomNumber = (java.getRandomNumber(socialMediaOptions.size()-1, 1));
-        for (int i=0;i<socialMediaOptions.size()-1;i++){
-            selenium.hardWait(2);
-            WebElement option = socialMediaOptions.get(i);
-            selenium.hardWait(3);
-           // System.out.println(option.getText());
 
-        }
+    public void shareTheContentInOptionsList() throws InterruptedException {
+        selenium.hardWait(2);
+        driver.findElement(By.xpath("//span[@class='p-menuitem-icon share-icon share-icon-tatwacare ng-star-inserted']")).click();
+        selenium.hardWait(3);
+        driver.findElement(By.xpath("//button[@class='btn btn-primary submit-btn']")).click();
+        selenium.hardWait(10);
     }
 
-    public void backOnContentDetailPage()throws InterruptedException{
+    public void backOnContentDetailPage() throws InterruptedException {
         selenium.click(backButtonOnContentDetailPage);
     }
-    public  void clearAll()throws InterruptedException{
+
+    public void clearAll() throws InterruptedException {
         selenium.click(clearAllButton);
 
     }
@@ -188,7 +198,7 @@ public class TatvaPediaPO extends BasePO {
 //        driver.findElement(By.xpath(xpath)).click();}
 
 
-    public void UnselectAllFilterAndVerify() throws InterruptedException{
+    public void UnselectAllFilterAndVerify() throws InterruptedException {
         List<WebElement> filtersSelectButtons = driver.findElements(By.xpath("//a[@class='text-decoration-none clear-all']"));
         // Loop through the buttons and toggle their selection
 
@@ -206,28 +216,55 @@ public class TatvaPediaPO extends BasePO {
             }
         }
     }
-    public String resultOfUnselectAllFilters(){
+
+    public String resultOfUnselectAllFilters() {
+       // selenium.pageScrollInView(driver.findElement(By.xpath("//div[@class='row ng-star-inserted']//div")));
         String textResult;
-        textResult  =driver.findElement(By.xpath("//div[@class='col-12 mt-4']")).getText();
-     return textResult;
+        textResult = driver.findElement(By.xpath("//div[@class='row ng-star-inserted']//div")).getText();
+        return textResult;
     }
 
-     }
 
+    @Step("Click On Unselect Button of Genre And Check It Change Into Select All Button")
+    public List<String> unSelectorSelectCheckBoxOfContinuum() throws InterruptedException {
+        List<String> contCheckList = new ArrayList<>();
+        selenium.hardWait(5);
+        String bText = selenium.getText(continuumSelectFilterButton);
+        contCheckList.add(bText);
+        selenium.hardWait(2);
+        selenium.click(continuumSelectFilterButton);
+        selenium.hardWait(2);
+        String newBText = selenium.getText(continuumSelectFilterButton);
+        contCheckList.add(newBText);
+        selenium.hardWait(2);
+        return contCheckList;
+    }
 
-//    public void unSelectCheckBoxOfContinuum(String filterName) throws InterruptedException {
-//
-//        String xpath = "//div[@id='content'" + filterName + "'Filter']//a[@class='text-decoration-none clear-all']";
-//        selenium.javascriptSetValue(continuumSelectFilterButton);
-////              driver.findElement(By.xpath(xpath)).click();
-//        String conSelectCheckBoxButtonText = selenium.getText(continuumSelectFilterButton);
-//        selenium.hardWait(3);
-////        selenium.click(continuumSelectFilterButton);
-//        driver.findElement(By.xpath(xpath)).click();
-//        String conSelectCheckBosButtonText2 = selenium.getText(continuumSelectFilterButton);
-//        selenium.hardWait(5);
-//        Assert.assertNotEquals(conSelectCheckBoxButtonText, conSelectCheckBosButtonText2);
-//
-//    }
+    @Step("Unselect filter of Continuum And Verify The Result")
+    public String resultOfUnselectContinuumFilter() throws InterruptedException {
+        selenium.click(applyFilterButton);
+        String textResult = driver.findElement(By.xpath("//app-content-genre-section[@id='appContentSection_Clinical_Education']//div[2]")).getText();
+        return textResult;
+    }
+    @Step("Go to the Social and Verify")
+    public String NavigateOnSocialTabAndVerify()throws InterruptedException{
+        selenium.click(socialTabButton);
+        selenium.hardWait(20);
+        String titleText = driver.findElement(By.xpath("//p[contains(@class,'post-data-title')]//span[1]")).getText();
+        return titleText;
+    }
 
+    public String selectContentType() throws InterruptedException {
+        return selenium.getText(contentType);
+    }
+    public void startWebinar()throws InterruptedException{
+        selenium.clickOn(startWebinarButton);
+        selenium.hardWait(5);
+        selenium.getWindowHandles();
+        selenium.switchToWindow(1);
+    }
+    public void backToHomePage(){
+        driver.findElement(By.xpath("//span[text()='Social']")).click();
+    }
 
+}

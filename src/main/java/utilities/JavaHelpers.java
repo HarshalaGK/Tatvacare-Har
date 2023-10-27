@@ -12,6 +12,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class JavaHelpers {
 
@@ -152,6 +154,29 @@ public class JavaHelpers {
      */
     public String getRandomNumber(int maxNumber, int minNumber) {
         return String.valueOf( Math.floor(Math.random() * ((maxNumber) - minNumber) + minNumber));
+    }
+    public static String getPhoneNumber(int i) {
+        Random rand = new Random();
+        String phoneNumber = "";
+        for (i = 0; i < 10; i++) {
+            phoneNumber += rand.nextInt(10);
+        }
+        return phoneNumber;
+    }
+    public static String getContentId(int i) {
+        Random rand = new Random();
+        String contentId = "";
+        for (i = 0; i < 10; i++) {
+            contentId  += rand.nextInt(7);
+        }
+        return contentId ;
+    }
+
+    public static String getRandomString(int length) {
+        boolean useLetters = true;
+        boolean useNumbers = false;
+        String generatedString = RandomStringUtils.random(length, useLetters, useNumbers);
+        return generatedString;
     }
 
     public static int  getRandomNumberInInteger(int maxNumber, int minNumber) {
