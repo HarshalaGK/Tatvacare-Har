@@ -171,12 +171,13 @@ public class ContentManagementPO extends BasePO {
        }
        public void selectSpeciality()throws InterruptedException{
             selenium.hardWait(3);
-            selenium.clickOn(specialityTextBox);
+            selenium.javascriptClickOn(specialityTextBox);
+            selenium.hardWait(2);
                List<WebElement> filterOption = driver.findElements(By.xpath("//ul[@role='listbox']/p-multiselectitem"));
                String randomNumber = (javahelpers.getRandomNumber(filterOption.size(), 1));
-               selenium.hardWait(2);
-               driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber + "]/li/div")).click();
-               selenium.hardWait(2);
+               selenium.hardWait(3);
+               driver.findElement(By.xpath("//ul[@role='listbox']/p-multiselectitem[" + randomNumber + "]//li/div")).click();
+               selenium.hardWait(3);
            }
            public void selectTopic()throws InterruptedException{
             selenium.clickOn(topicTextBox);
@@ -193,11 +194,11 @@ public class ContentManagementPO extends BasePO {
        }
        public void selectDate()throws InterruptedException{
             driver.findElement(By.xpath("//p-calendar[@formcontrolname='date']//button")).click();
-            selenium.hardWait(2);
+            selenium.hardWait(4);
             driver.findElement(By.xpath("//td[contains(@class,'p-datepicker-today ng-star-inserted')]")).click();
        }
        public void permission(){
-            driver.findElement(By.xpath("//p-checkbox[@value='isDownload']")).click();
+           // driver.findElement(By.xpath("//p-checkbox[@value='isDownload']")).click();
             driver.findElement(By.xpath("//p-checkbox[@inputid='externalSharing']")).click();
        }
 
@@ -269,9 +270,6 @@ public class ContentManagementPO extends BasePO {
         String text=  driver.findElement(By.xpath("//div[text()='Content File uploaded successfully.']")).getText();
         return text;
      }
-
-
-
 
 
 }

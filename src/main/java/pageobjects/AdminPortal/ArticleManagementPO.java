@@ -133,7 +133,6 @@ public class ArticleManagementPO extends BasePO {
        // driver.findElement(By.xpath("//span[text()='Upload Article']//parent::button")).click();
         driver.findElement(By.xpath("//input[@class='custom-file-input']")).sendKeys("C://Users//hlink//Desktop//NweTatvacare//Tatvacare-Har//src//main//resources//Images//sample pdf.pdf");
         driver.findElement(By.xpath("//span[text()='Save']//parent::button")).click();
-
     }
 
 }

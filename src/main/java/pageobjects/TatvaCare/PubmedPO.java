@@ -154,6 +154,7 @@ public class PubmedPO extends BasePO {
         checkList.add(buttonText);
         selenium.hardWait(2);
         selenium.click(requestArticleButton);
+        selenium.hardWait(2);
         selenium.enterText(messageBoxForRequest, "Want to read full Article", true);
         selenium.clickOn(sendRequest);
         selenium.hardWait(2);

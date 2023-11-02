@@ -31,7 +31,6 @@ public class EventManagementTest extends BaseTest {
         event.selectScheduleDate();
         event.publishEvent();
         selenium.hardWait(10);
-
         Reporter.log("Step 2: verify the Extenal Event Is Publish or not");
         String newsText = event.eventVerify();
         Assert.assertEquals("1 External Event" , newsText);
@@ -54,7 +53,6 @@ public class EventManagementTest extends BaseTest {
         event.selectScheduleDate();
         event.publishEvent();
         selenium.hardWait(10);
-
         Reporter.log("Step 2: verify the Extenal Event Is Publish or not");
         String nText = event.eventVerify();
         Assert.assertEquals("2 Internal Event" , newsText);

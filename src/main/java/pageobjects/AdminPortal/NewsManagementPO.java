@@ -50,7 +50,7 @@ public class NewsManagementPO extends BasePO {
     private WebElement trendingEndDateBox;
     @FindBy(xpath = "//td[contains(@class,'datepicker-today')]")
     private WebElement trendingStartDate;
-    @FindBy(xpath = "//td[contains(@class,'datepicker-today')]/following-sibling::td[1]")
+     @FindBy(xpath = "//td[contains(@class,'datepicker-today')]/following-sibling::td[1]")
     private WebElement trendingEndDate;
 
     @FindBy(xpath = "//div[contains(text(),'Select Country')]")

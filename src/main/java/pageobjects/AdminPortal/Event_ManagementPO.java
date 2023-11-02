@@ -25,7 +25,8 @@ public class Event_ManagementPO extends BasePO {
     @FindBy(xpath = "//input[@placeholder='Enter Content ID']")
     private WebElement contentIdTextBox;
 
-    @FindBy(xpath = "//div[contains(text(),'Select Country')]")
+    //@FindBy(xpath = "//div[contains(text(),'Select Country')]")
+    @FindBy(xpath = "//div[contains(text(),'Select Country')]//parent::div[1]")
     private WebElement selectCountyDropDown;
 
     @FindBy(xpath = "//div[contains(@class, 'p-multiselect-header ng-tns')]//div[1]")

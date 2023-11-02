@@ -14,7 +14,7 @@ import pageobjects.AdminPortal.ContentManagementPO;
 public class ContentManagementTest extends BaseTest {
 
     @Test(priority = 0, description = "Login In Admin Portal and create Editorial Research Content")
-    public void editorialsResearchContent() throws InterruptedException {
+    public void TC001editorialsResearchContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -30,7 +30,9 @@ public class ContentManagementTest extends BaseTest {
         content.editorialsResearchContentUploadPDFFile();
         content.contentTitle("Education Research");
         content.contentDescription("Detail of education research");
+        selenium.hardWait(3);
         content.readTime();
+        selenium.hardWait(2);
         content.selectSpeciality();
         content.selectTopic();
         content.therapyBasedTag();
@@ -42,15 +44,16 @@ public class ContentManagementTest extends BaseTest {
         content.schedulePublish();
         selenium.hardWait(2);
         content.saveContent();
-        selenium.hardWait(8);
+        selenium.hardWait(10);
         Reporter.log("Step 2: Verify the Editorial Research Content Is Created");
         String message = content.successMessage();
         selenium.hardWait(2);
         Assert.assertEquals(message, "Content file uploaded successfully.");
+        selenium.hardWait(5);
     }
 
     @Test(priority = 1, description = "Login In Admin Portal And Create Expert Opinion Content ")
-    public void expertOpinion() throws InterruptedException {
+    public void TC002expertOpinion() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -66,9 +69,9 @@ public class ContentManagementTest extends BaseTest {
         content.expertOpinionVideoUploadPDFFile();
         content.contentTitle("Expert Opinions content");
         content.contentDescription("Detail of Expert Opinions");
-        content.readTime();
         content.selectSpeciality();
         content.selectTopic();
+        content.readTime();
         content.therapyBasedTag();
         content.descriptionBasedTag();
         selenium.hardWait(1);
@@ -78,12 +81,15 @@ public class ContentManagementTest extends BaseTest {
         selenium.hardWait(2);
         content.saveContent();
         Reporter.log("Step 4: Verify the  Expert Opinions Content Is Created ");
-        selenium.hardWait(3);
+        selenium.hardWait(10);
+        String message = content.successMessage();
+        selenium.hardWait(2);
+        Assert.assertEquals(message, "Content file uploaded successfully.");
     }
 
 
     @Test(priority = 2, description = "Login In Admin Portal And Create Infographic Content ")
-    public void InfographicsContent() throws InterruptedException {
+    public void TC003InfographicsContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -100,6 +106,7 @@ public class ContentManagementTest extends BaseTest {
         content.contentTitle("Infographics content");
         content.contentDescription("Detail of Infographics");
         content.readTime();
+        selenium.hardWait(2);
         content.selectSpeciality();
         content.selectTopic();
         content.therapyBasedTag();
@@ -115,7 +122,7 @@ public class ContentManagementTest extends BaseTest {
     }
 
     @Test(priority = 3, description = "Login In Admin Portal And Create Medical Slide Library Content ")
-    public void MedicalSlideLibraryContent() throws InterruptedException {
+    public void TC004MedicalSlideLibraryContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -131,6 +138,7 @@ public class ContentManagementTest extends BaseTest {
         content.MedicalSlideLibraryPPTxFile();
         content.contentTitle("Title - Medical Slide Library ");
         content.contentDescription("Detail of Medical Slide Library");
+        selenium.hardWait(2);
         content.selectSpeciality();
         content.selectTopic();
         content.therapyBasedTag();
@@ -147,7 +155,7 @@ public class ContentManagementTest extends BaseTest {
 
 
     @Test(priority = 4, description = "Login In Admin Portal And Create Podcast Content ")
-    public void PodcastsContent() throws InterruptedException {
+    public void TC005PodcastsContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -163,9 +171,9 @@ public class ContentManagementTest extends BaseTest {
         content.PodcastUploadMP3File();
         content.contentTitle("Title - PodcastsTag");
         content.contentDescription("Detail of PodcastsTag");
-        content.readTime();
         content.selectSpeciality();
         content.selectTopic();
+        content.readTime();
         content.therapyBasedTag();
         content.descriptionBasedTag();
         selenium.hardWait(1);
@@ -180,7 +188,7 @@ public class ContentManagementTest extends BaseTest {
     }
 
     @Test(priority = 5, description = "Login In Admin Portal And Create Webinars Content ")
-    public void WebinarsAndPanelDiscussions() throws InterruptedException {
+    public void TC006WebinarsAndPanelDiscussions() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -196,13 +204,15 @@ public class ContentManagementTest extends BaseTest {
         content.WebinarsAndPanelDiscussionsUploadMP4File();
         content.contentTitle("Title - Webinars & Panel Discussions");
         content.contentDescription("Detail Webinars & Panel Discussions");
-        content.readTime();
+        selenium.hardWait(2);
         content.selectSpeciality();
         content.selectTopic();
+        content.readTime();
         content.therapyBasedTag();
         content.descriptionBasedTag();
-        selenium.hardWait(1);
+        selenium.hardWait(2);
         content.selectDate();
+        selenium.hardWait(3);
         content.externalLink("www.google.com");
         content.permission();
         content.schedulePublish();
@@ -212,8 +222,8 @@ public class ContentManagementTest extends BaseTest {
         selenium.hardWait(3);
     }
 
-    @Test(priority = 4, description = "Login In Admin Portal and Navigate on Contain management ")
-    public void editContent() throws InterruptedException {
+    @Test(priority = 6, description = "Login In Admin Portal and Navigate on Contain management ")
+    public void TC007editContent() throws InterruptedException {
         AdminLogin adminLoginData = new AdminLoginData().getAdminLoginData();
         ContentManagementPO content = new ContentManagementPO(driver);
         new Admin_LoginFunction(driver, selenium).loginByAdmin(adminLoginData.getAdminMobileNumber(), adminLoginData.getAdminPassword());
@@ -221,6 +231,7 @@ public class ContentManagementTest extends BaseTest {
         content.selectContentManagementTab();
         content.editConetent();
         content.saveContent();
+        selenium.hardWait(3);
         Reporter.log("Step 7: Verify The Contend Updated Successfully");
         String text = content.successEditMessage();
         Assert.assertEquals(text,"Content File uploaded successfully.");

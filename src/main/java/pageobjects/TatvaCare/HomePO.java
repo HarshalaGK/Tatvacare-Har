@@ -64,7 +64,7 @@ public class HomePO extends BasePO {
     private WebElement walkThroughSkipButton;
 
     @FindBy(xpath = "//button[@title='Search Content']")
-    private WebElement searchButton;
+    private WebElement searchContentINHomePage;
 
       public void loginAndClickOnHomeTab() throws InterruptedException {
           selenium.hardWait(10);
@@ -130,11 +130,11 @@ public class HomePO extends BasePO {
         driver.findElement(By.xpath("//span[text()=' Yes ']")).click();
     }
     public void searchWordInHomePage(String text) throws InterruptedException{
-            selenium.clickOn(searchButton);
-            selenium.hardWait(2);
+            selenium.javascriptClickOn(searchContentINHomePage);
+            selenium.hardWait(3);
             WebElement searchBar = driver.findElement(By.xpath("//input[@role='searchbox']"));
             selenium.enterText(searchBar, text, true);
-            selenium.hardWait(1);
+            selenium.hardWait(2);
     }
     @Step("Select Any Suggestion and  navigate search result page")
     public void selectRandomSuggestion() throws InterruptedException {
