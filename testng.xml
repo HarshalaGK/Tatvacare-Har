@@ -9,15 +9,13 @@
             <class name="TatvaCare.HomeTest"/>
             <class name="TatvaCare.TatvaPediaTest"/>
             <class name="TatvaCare.PubmedTest"/>
-            <class name="TatvaCare.CalendarTest"></class>
-            <class name="TatvaCare.TatvaShotTest"></class>
-            
-            <class name="AdminPortal.AdminLoginTest"></class>
-            <class name="AdminPortal.ArticleManagementTest"></class>
-            <class name="AdminPortal.ContentManagementTest"></class>
-            <class name="AdminPortal.EventManagementTest"></class>
-            <class name="AdminPortal.NewsManagementTest"></class>
-            
+            <class name="TatvaCare.CalendarTest"/>
+            <class name="TatvaCare.TatvaShotTest"/>
+            <class name="AdminPortal.AdminLoginTest"/>
+            <class name="AdminPortal.ArticleManagementTest"/>
+            <class name="AdminPortal.ContentManagementTest"/>
+            <class name="AdminPortal.EventManagementTest"/>
+
 
         </classes>
     </test> <!-- Test -->

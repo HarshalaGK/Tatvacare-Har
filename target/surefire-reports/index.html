@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button class="button" id="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" class="collapse-all-link" title="Collapse/expand all the suites">
+          <img class="collapse-all-icon" src="collapseall.gif">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" class="navigator-link" panel-name="suite-Positive_Cases">
+              <span class="suite-name border-passed">Positive Cases</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="test-xml-Positive_Cases">
+                    <span>C:\Users\hlink\Desktop\NweTatvacare\Tatvacare-Har\testng.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="testlist-Positive_Cases">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="group-Positive_Cases">
+                    <span>0 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="times-Positive_Cases">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="reporter-Positive_Cases">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-Positive_Cases">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" class="navigator-link " panel-name="chronological-Positive_Cases">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">3 methods,   3 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Positive_Cases" class="hide-methods passed suite-Positive_Cases"> (hide)</a> <!-- hide-methods passed suite-Positive_Cases -->
+                      <a href="#" panel-name="suite-Positive_Cases" class="show-methods passed suite-Positive_Cases"> (show)</a> <!-- show-methods passed suite-Positive_Cases -->
+                    </span>
+                    <div class="method-list-content passed suite-Positive_Cases">
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Positive_Cases" title="TatvaCare.LoginTest" hash-for-method="clickOnLoginButtonWithoutFillRequiredField">clickOnLoginButtonWithoutFillRequiredField</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Positive_Cases" title="TatvaCare.LoginTest" hash-for-method="enterInvalidLoginCredentialsAndClickOnLoginButton">enterInvalidLoginCredentialsAndClickOnLoginButton</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img width="3%" src="passed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-Positive_Cases" title="TatvaCare.LoginTest" hash-for-method="enterLoginCredentialsAndClickOnLoginButton">enterLoginCredentialsAndClickOnLoginButton</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Positive_Cases -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Positive_Cases" class="panel Positive_Cases">
+          <div class="suite-Positive_Cases-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">TatvaCare.LoginTest</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="clickOnLoginButtonWithoutFillRequiredField">
+                  </a> <!-- clickOnLoginButtonWithoutFillRequiredField -->
+                  <span class="method-name">clickOnLoginButtonWithoutFillRequiredField</span>
+                  <em>
+(Click On Login Button withot Filled Mobile Number and Password.)                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="enterInvalidLoginCredentialsAndClickOnLoginButton">
+                  </a> <!-- enterInvalidLoginCredentialsAndClickOnLoginButton -->
+                  <span class="method-name">enterInvalidLoginCredentialsAndClickOnLoginButton</span>
+                  <em>
+(Login with invalid credentials. )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="enterLoginCredentialsAndClickOnLoginButton">
+                  </a> <!-- enterLoginCredentialsAndClickOnLoginButton -->
+                  <span class="method-name">enterLoginCredentialsAndClickOnLoginButton</span>
+                  <em>
+(Login with valid credentials. )                  </em>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Positive_Cases-class-passed -->
+        </div> <!-- panel Positive_Cases -->
+        <div panel-name="test-xml-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\hlink\Desktop\NweTatvacare\Tatvacare-Har\testng.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite thread-count=&quot;1&quot; guice-stage=&quot;DEVELOPMENT&quot; verbose=&quot;0&quot; name=&quot;Positive Cases&quot; parallel=&quot;classes&quot;&gt;
+  &lt;test thread-count=&quot;1&quot; verbose=&quot;0&quot; name=&quot;register, service and purchase invoice, company, and export data Cases&quot; parallel=&quot;classes&quot;&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;TatvaCare.LoginTest&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- register, service and purchase invoice, company, and export data Cases --&gt;
+&lt;/suite&gt; &lt;!-- Positive Cases --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Positive Cases</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">register, service and purchase invoice, company, and export data Cases (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Positive Cases</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Positive Cases</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Positive_Cases');
+function tableData_Positive_Cases() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(3);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'enterLoginCredentialsAndClickOnLoginButton')
+data.setCell(0, 2, 'TatvaCare.LoginTest')
+data.setCell(0, 3, 22322);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'clickOnLoginButtonWithoutFillRequiredField')
+data.setCell(1, 2, 'TatvaCare.LoginTest')
+data.setCell(1, 3, 12160);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'enterInvalidLoginCredentialsAndClickOnLoginButton')
+data.setCell(2, 2, 'TatvaCare.LoginTest')
+data.setCell(2, 3, 10449);
+window.suiteTableData['Positive_Cases']= { tableData: data, tableDiv: 'times-div-Positive_Cases'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 44 seconds</span>
+              <div id="times-div-Positive_Cases">
+              </div> <!-- times-div-Positive_Cases -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Positive Cases</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">clickOnLoginButtonWithoutFillRequiredField</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Step 1: Navigate to URl</span>
+                <span class="reporter-method-output">Step 2: Click on the login button</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">enterInvalidLoginCredentialsAndClickOnLoginButton</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Step 1: Navigate to URl</span>
+                <span class="reporter-method-output">Step 2: Enter invalid mobile number, invalid password and click on the login button</span>
+                <span class="reporter-method-output">Step : Verify the validation message</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+            <div class="reporter-method-div">
+              <span class="reporter-method-name">enterLoginCredentialsAndClickOnLoginButton</span>
+              <div class="reporter-method-output-div">
+                <span class="reporter-method-output">Step 1: Navigate to URl</span>
+                <span class="reporter-method-output">Step 2: Enter mobileNumber, password and click on the login button</span>
+              </div> <!-- reporter-method-output-div -->
+            </div> <!-- reporter-method-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">0 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Positive_Cases" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">TatvaCare.LoginTest</div> <!-- chronological-class-name -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome)</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">clickOnLoginButtonWithoutFillRequiredField</span>
+                <span class="method-start">6333 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=clickOnLoginButtonWithoutFillRequiredField status=SUCCESS method=LoginTest.clickOnL...)</span>
+                <span class="method-start">18503 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome)</span>
+                <span class="method-start">19209 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">enterInvalidLoginCredentialsAndClickOnLoginButton</span>
+                <span class="method-start">22077 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=enterInvalidLoginCredentialsAndClickOnLoginButton status=SUCCESS method=LoginTest.e...)</span>
+                <span class="method-start">32528 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-method before">
+                <span class="method-name">setUp(chrome)</span>
+                <span class="method-start">33216 ms</span>
+              </div> <!-- configuration-method before -->
+              <div class="test-method">
+                <span class="method-name">enterLoginCredentialsAndClickOnLoginButton</span>
+                <span class="method-start">35985 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">tearDown([TestResult name=enterLoginCredentialsAndClickOnLoginButton status=SUCCESS method=LoginTest.enterLog...)</span>
+                <span class="method-start">58310 ms</span>
+              </div> <!-- configuration-method after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>
